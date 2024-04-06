@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <AcompanhamentoView></AcompanhamentoView>
+    <LacunaView></LacunaView>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import AcompanhamentoView from "./acompanhamento/AcompanhamentoView.vue";
+import LacunaView from "./lacuna/LacunaView.vue";
 
 @Options({
   components: {
-    AcompanhamentoView,
+    LacunaView,
   },
 })
 export default class HomeView extends Vue { }
