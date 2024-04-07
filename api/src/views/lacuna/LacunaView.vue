@@ -75,9 +75,9 @@ export default class LacunaView extends Vue {
     font-weight: bold;
 }
     h2 {
-        display: block;
+    display: block;
     font-size: 1.2em;
-    margin-block-start: 0.6em;
+    margin-block-start: 0.67em;
     margin-block-end: 0.67em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
@@ -85,7 +85,7 @@ export default class LacunaView extends Vue {
     }
 
     h3 {
-        display: block;
+    display: block;
     font-size: 1em;
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
