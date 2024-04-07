@@ -6,9 +6,12 @@
       </div>
       <div class="menu__links">
         <router-link to="/">
-          Home
+          rastreio
         </router-link>
-        <router-link to="/about">About</router-link>
+        <router-link to="/trilha">trilha</router-link>
+        <router-link to="/acompanhamento">acompanhamento</router-link>
+        <router-link to="/habilidade">habilidade</router-link>
+  
       </div>
     </nav>
 

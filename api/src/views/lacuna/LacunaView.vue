@@ -5,12 +5,14 @@
         </div>
         <div class="lacuna__content">
             <div class="lacuna__card">
-                <select v-model="selected">
+              <!--  <select v-model="selected">
+            </select>-->
+            <select class="form-select" aria-label=".form-select-lg example">
                 <option disabled value="">Escolha um item</option>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-            </select>
+                <option v-for="item in listmodal" :key="item.id" :value="item.id">{{ item.desc
+        }}
+        </option>
+      </select>
             </div>
             <div class="lacuna__card1">
                 <h1>Trilha</h1>
@@ -20,12 +22,19 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import 'axios' from 'axios';
+
 @Options({
 
 })
 export default class LacunaView extends Vue {
+    listmodal = [
+{
+    id: 1,
+    desc:""
+}    ];
     created() {
         console.log("im here")
     }
@@ -85,13 +94,13 @@ export default class LacunaView extends Vue {
     }
 
     h3 {
-    display: block;
+    display: flex;
     font-size: 1em;
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    font-weight: bold;
+    justify-content: center;
 
     }
 }
