@@ -125,7 +125,7 @@ table{
   padding-bottom: 200px;
 }
 th {
-  padding-right: 100px; /* Adiciona 20px de espaçamento à direita de cada coluna */
+  padding-right: 100px; 
 }
 td{
   padding-right: 100px;
@@ -156,7 +156,7 @@ select {
   margin: auto;
   border-radius: 20px;
   background-color: #EDEDED;
-  opacity: 1; /* Alterei para 1 para garantir que o container seja visível */
+  opacity: 1; 
 }
 
 
