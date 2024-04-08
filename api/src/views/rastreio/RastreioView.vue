@@ -30,7 +30,7 @@
                   Acompanhar trilhas
                 </button>
               </router-link>
-              <button type="button" :on-click="solicitarFeedback(nome.id)" class="btn btn-info">
+              <button type="button" @click="solicitarFeedback(nome.id)" class="btn btn-info">
                 Solicitar Feedback
               </button>
             </td>
@@ -120,6 +120,7 @@ export default class RastreioView extends Vue {
   }
 
   solicitarFeedback(colaboradorId: number) {
+    console.log('sending to ->', colaboradorId)
     axios.post("feedback/" + colaboradorId).then((r) => {
       Swal.fire({
         html: `Feedback solicitado ao parceiro`,
