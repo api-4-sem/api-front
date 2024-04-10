@@ -6,9 +6,12 @@
       </div>
       <div class="menu__links">
         <router-link to="/">
-          Home
+          Rastreio
         </router-link>
-        <router-link to="/about">About</router-link>
+        <router-link to="/trilha">Trilha</router-link>
+        <router-link to="/acompanhamento">Acompanhamento</router-link>
+        <router-link to="/habilidade">Habilidades</router-link>
+  
       </div>
     </nav>
 
@@ -49,16 +52,20 @@ body {
   background-color: #464444;
   width: 100%;
   height: 60px;
-  gap: 30%;
+  gap: 20%;
   display: grid;
+  grid-template-columns: auto;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
   grid-template-columns: 200px max-content;
 }
 
 .menu__logo {
-  margin-left: 21px;
+  margin-left: 25px;
   display: flex;
   align-content: center;
-
+  
   img {
     height: 47px;
     margin: auto 0;
@@ -69,19 +76,25 @@ body {
   margin: 0 auto;
   display: flex;
   width: 100%;
+  
   align-items: center;
-  gap: 15px;
-
+  flex-direction: row;
+  text-align: center;
   a {
     color: white;
     text-decoration: none;
     min-width: fit-content;
+    margin: 0 15px;
+    padding-left: 15px;
   }
+  justify-content: space-around; /* Distribui os itens igualmente */
 }
+
+
 
 .content {
   flex: 1;
-  padding: 60px 20px 0 20px;
+  padding: 60px 20px 0 0px;
 }
 
 .footer {
@@ -93,8 +106,8 @@ body {
   border-top: 1px solid black;
 
   img {
-    margin-right: 10px;
-    height: inherit;
+    margin-right: 20px;
+    
   }
 }
 </style>
