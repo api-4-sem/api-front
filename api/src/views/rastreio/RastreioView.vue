@@ -3,9 +3,10 @@
     <h2 style="padding-right: 800px">Rastreio</h2>
 
     <div class="container">
-      <select class="select">
-        <option value="colaborador1">Parceiros</option>
-        <option value="colaborador2">Colaborador 2</option>
+
+      <select class="select" v-model="selectedParceiro" @change="filtroNomeParceiro(selectedParceiro)">
+        <option value="0">Cancelar filtro</option>
+        <option v-for="nome in nomeColaborador" :key="nome.id" :value="nome.id">{{ nome.nome }}</option>
       </select>
 
       <table>
@@ -17,10 +18,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="nome in nomeColaborador" :key="nome.nome" value="id">
+          <tr v-for="nome in nomeColaboradorFiltrado.length > 0 ? nomeColaboradorFiltrado : nomeColaborador" :key="nome.nome" value="id">
             <td>{{ nome.nome }}</td>
             <td>
-              <button type="button" class="btn btn-secondary" @click="abrirModal">
+              <button type="button" class="btn btn-secondary" @click="abrirModal"
+              
+              >
                 Status
               </button>
             </td>
@@ -30,8 +33,11 @@
                   Acompanhar trilhas
                 </button>
               </router-link>
-              <button type="button" @click="solicitarFeedback(nome.id)" class="btn btn-info">
-                Solicitar Feedback
+              <button type="button" @click="solicitarFeedback(nome.id)" class="btn btn-info" style="
+                margin-right: -20;
+                margin-left: 20px;
+              ">
+                  Solicitar Feedback
               </button>
             </td>
           </tr>
@@ -64,15 +70,29 @@ export default class RastreioView extends Vue {
     nomeDatrilha: string;
     porcentagemEmanadamento: string;
   }[] = [];
+  nomeColaboradorFiltrado: {
+    id: number,
+    nome: string
+  }[] = [];
+  selectedParceiro: number = 0;
 
   mounted() {
     this.getNomeParceiro();
   }
 
+
   async getNomeParceiro() {
     axios.get("/colaborador/1").then((response) => {
       this.nomeColaborador = response.data;
     });
+  }
+
+  filtroNomeParceiro(id: number) {
+    if (id === 0) {
+      this.nomeColaboradorFiltrado = [];
+    } else {
+      this.nomeColaboradorFiltrado = this.nomeColaborador.filter((nome) => nome.id === id);
+    }
   }
 
   abrirModal() {
