@@ -21,7 +21,7 @@ import { RouterLink } from "vue-router";
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
+ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale);
 
 @Options({
     name: "VisualizacaoView",
@@ -40,8 +40,22 @@ export default class VisualizacaoView extends Vue {
         datasets: [{ data: [] }]
     };
     chartOptions = {
+        backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+        borderColor: ['rgba(54, 162, 235)'],
         responsive: true,
         indexAxis: 'y',
+        scales: {
+            x: {
+                beginAtZero: true,
+                min: 0,
+                max: 100,
+                ticks: {
+                    callback: function(value: number) {
+                        return value + '%';
+                    }
+                }
+            }
+        }
     };
 
     mounted() {
@@ -79,15 +93,20 @@ export default class VisualizacaoView extends Vue {
 <style>
 select {
     opacity: 1;
-    background-color: #bfb8b8;
+    background-color: #D4D3D3;
     border-radius: 8px;
     padding: 0.5rem;
     padding-right: 2rem;
-    width: auto;
-    font-size: 1rem;
+    width: 170px;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 10px; 
+    top: 9%; 
+    transform: translateY(-50%);
 }
 
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 1099px;
