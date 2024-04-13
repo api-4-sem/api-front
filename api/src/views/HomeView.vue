@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <AcompanhamentoView></AcompanhamentoView>
+    <RastreioView></RastreioView>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import AcompanhamentoView from "./acompanhamento/AcompanhamentoView.vue";
+import RastreioView from "./rastreio/RastreioView.vue";
 
 @Options({
   components: {
-    AcompanhamentoView,
+    RastreioView,
   },
 })
 export default class HomeView extends Vue { }
