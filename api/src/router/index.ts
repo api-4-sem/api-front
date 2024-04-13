@@ -16,6 +16,12 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: RastreioView
   },
+  {
+    path: "/visualizacao",
+    name: "visualizacao",
+    component: () =>
+      import(/* webpackChunkName: "visualizacao" */ "../views/visualizacao/VisualizacaoView.vue"),
+  },
 ];
 
 const router = createRouter({

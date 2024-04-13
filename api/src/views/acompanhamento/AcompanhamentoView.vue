@@ -13,11 +13,10 @@
                         <th>Criticidade</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Embraer</td>
-                            <td>Lucas</td>
-                            <td>05/03/2024</td>
-                            <td>-</td>
+                        <tr v-for="item in data">
+                            <td>{{ item.nomeEmpresa }}</td>
+                            <td>{{ item.nomeColaborador }}</td>
+                            <td><span v-for="trilhas in data.dadosTrilha"></span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -34,8 +33,29 @@ import axios from 'axios'
 
 })
 export default class AcompanhamentoView extends Vue {
+    data = []
+
     created() {
-        console.log("im here")
+        this.getAllPartners()
+    }
+
+    getAllPartners() {
+        axios.get("api/progresso-colaborador/progresso/1")
+            .then(response => data = response);
+    }
+
+    getCriticity(item) {
+        const startedAt = new Date(); //from item
+        const today = new Date();
+        const dueDate = new Date(); //from item
+
+        const diffTime = (dueDate.getTime() - startedAt.getTime());
+        const diffTimeRatio = (today.getTime() - startedAt.getTime());
+        const ratio = diffTime / Math.max(diffTimeRatio, 1);
+
+        if (diffTime <= 0 || ratio <= 1) return "criticity__danger"
+        if (ratio <= 2) return "criticity__warning"
+        return "criticity__safe";
     }
 }
 </script>
@@ -68,5 +88,19 @@ export default class AcompanhamentoView extends Vue {
 
 table {
     width: 100%;
+}
+
+.criticity {
+    &__danger {
+        background-color: darkred;
+    }
+
+    &__warning {
+        background-color: yellow;
+    }
+
+    &__safe {
+        background-color: greenyellow;
+    }
 }
 </style>
