@@ -1,9 +1,7 @@
 <template>
   <div>
     <h2 style="padding-right: 800px">Rastreio</h2>
-
     <div class="container">
-
       <select class="select" v-model="selectedParceiro" @change="filtroNomeParceiro(selectedParceiro)">
         <option value="0">Cancelar filtro</option>
         <option v-for="nome in nomeColaborador" :key="nome.id" :value="nome.id">{{ nome.nome }}</option>
@@ -18,12 +16,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="nome in nomeColaboradorFiltrado.length > 0 ? nomeColaboradorFiltrado : nomeColaborador" :key="nome.nome" value="id">
+          <tr v-for="nome in nomeColaboradorFiltrado.length > 0 ? nomeColaboradorFiltrado : nomeColaborador"
+            :key="nome.nome" value="id">
             <td>{{ nome.nome }}</td>
             <td>
-              <button type="button" class="btn btn-secondary" @click="abrirModal"
-              
-              >
+              <button type="button" class="btn btn-secondary" @click="abrirModal">
                 Status
               </button>
             </td>
@@ -37,7 +34,7 @@
                 margin-right: -20;
                 margin-left: 20px;
               ">
-                  Solicitar Feedback
+                Solicitar Feedback
               </button>
             </td>
           </tr>
