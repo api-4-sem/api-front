@@ -1,45 +1,49 @@
 <template>
-  <div>
-    <h2 style="padding-right: 800px">Rastreio</h2>
-    <div class="container">
-      <select class="select" v-model="selectedParceiro" @change="filtroNomeParceiro(selectedParceiro)">
-        <option value="0">Cancelar filtro</option>
-        <option v-for="nome in nomeColaborador" :key="nome.id" :value="nome.id">{{ nome.nome }}</option>
-      </select>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Parceiro</th>
-            <th>Status</th>
-            <th>Ação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="nome in nomeColaboradorFiltrado.length > 0 ? nomeColaboradorFiltrado : nomeColaborador"
-            :key="nome.nome" value="id">
-            <td>{{ nome.nome }}</td>
-            <td>
-              <button type="button" class="btn btn-secondary" @click="abrirModal">
-                Status
-              </button>
-            </td>
-            <td>
-              <router-link to="/trilhas">
-                <button type="button" class="btn btn-light">
-                  Acompanhar trilhas
+  <div class="rastreio">
+    <div class="rastreio__header">
+      <h2>Rastreio</h2>
+    </div>
+    <div class="rastreio__container">
+      <div class="rastreio__card">
+        <select class="form-select" v-model="selectedParceiro" @change="filtroNomeParceiro(selectedParceiro)">
+          <option value="0">Cancelar filtro</option>
+          <option v-for="nome in nomeColaborador" :key="nome.id" :value="nome.id">{{ nome.nome }}</option>
+        </select>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Parceiro</th>
+              <th>Status</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="nome in nomeColaboradorFiltrado.length > 0 ? nomeColaboradorFiltrado : nomeColaborador"
+              :key="nome.nome" value="id">
+              <td>{{ nome.nome }}</td>
+              <td>
+                <button type="button" class="btn btn-secondary" @click="abrirModal">
+                  Ver Mais
                 </button>
-              </router-link>
-              <button type="button" @click="solicitarFeedback(nome.id)" class="btn btn-info" style="
+              </td>
+              <td>
+                <router-link to="/trilhas">
+                  <button type="button" class="btn btn-outline-primary">
+                    Acompanhar trilhas
+                  </button>
+                </router-link>
+                <button type="button" @click="solicitarFeedback(nome.id)" class="btn btn-outline-primary" style="
                 margin-right: -20;
                 margin-left: 20px;
               ">
-                Solicitar Feedback
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                  Solicitar Feedback
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </div>
 </template>
@@ -126,7 +130,6 @@ export default class RastreioView extends Vue {
         }
       })
       .catch((error) => {
-        console.error(error);
         Swal.fire({
           title: "Erro",
           text: "Erro ao obter dados da trilha",
@@ -137,7 +140,6 @@ export default class RastreioView extends Vue {
   }
 
   solicitarFeedback(colaboradorId: number) {
-    console.log('sending to ->', colaboradorId)
     axios.post("feedback/" + colaboradorId).then((r) => {
       Swal.fire({
         html: `Feedback solicitado ao parceiro`,
@@ -153,41 +155,34 @@ export default class RastreioView extends Vue {
 }
 </script>
 
-<style>
-table {
-  padding-bottom: 200px;
-}
+<style lang="scss">
+.rastreio {
+  select {
+    width: 30%;
+    margin-bottom: 20px;
+  }
 
-th {
-  padding-right: 100px;
-}
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 0px;
+    margin-right: auto;
+  }
 
-td {
-  padding-right: 100px;
-  padding-bottom: 20px;
-}
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    height: inherit;
+  }
 
-select {
-  position: absolute;
-  width: 110px;
-  height: 35px;
-  top: 210px;
-  left: 310px;
-  opacity: 1;
-  background-color: #bfb8b8;
-  border-radius: 10px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 1099px;
-  height: 380px;
-  margin: auto;
-  border-radius: 20px;
-  background-color: #ededed;
-  opacity: 1;
+  &__card {
+    flex: 1;
+    border-radius: 8px;
+    min-height: 350px;
+    padding: 20px;
+    background-color: #ededed;
+    box-shadow: 0px 5px 7px #cec9c9;
+  }
 }
 </style>
