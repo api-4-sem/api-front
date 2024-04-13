@@ -14,10 +14,9 @@
                     </thead>
                     <tbody>
                         <tr v-for="item in data">
-                            <td>{{ item.parceiro }}</td>
-                            <td>{{ item.usuarios }}</td>
-                            <td>{{ item.vencimento }}</td>
-                            <td :class="getCriticity(item)">&nbsp;</td>
+                            <td>{{ item.nomeEmpresa }}</td>
+                            <td>{{ item.nomeColaborador }}</td>
+                            <td><span v-for="trilhas in data.dadosTrilha"></span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -37,10 +36,12 @@ export default class AcompanhamentoView extends Vue {
     data = []
 
     created() {
+        this.getAllPartners()
     }
 
     getAllPartners() {
-        axios.get().then(response => data = response);
+        axios.get("api/progresso-colaborador/progresso/1")
+            .then(response => data = response);
     }
 
     getCriticity(item) {
