@@ -2,6 +2,7 @@
     <div class="acompanhamento">
         <div class="acompanhamento__header">
             <h2>Acompanhamento de Parceiros</h2>
+
         </div>
         <div class="acompanhamento__content">
             <div class="acompanhamento__card">
@@ -41,6 +42,44 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <div class="acompanhamento__legend">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    Legenda
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="bg-danger">&nbsp;</span>
+                                </td>
+                                <td>
+                                    Perto da Expiração
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="bg-warning">&nbsp;</span>
+                                </td>
+                                <td>
+                                    Na metade da validade
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="bg-success">&nbsp;</span>
+                                </td>
+                                <td>
+                                    Longe de Expirar
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -63,6 +102,7 @@ function getCriticity(item: DadosProgressoTrilha) {
     const startedAt = new Date(item.dataConclusaoTrilha);
     const today = new Date();
     const dueDate = new Date(startedAt);
+    dueDate.setFullYear(startedAt.getFullYear() + item.validadeTrilha, startedAt.getMonth(), startedAt.getDate())
 
     const diffTime = (dueDate.getTime() - startedAt.getTime());
     const diffTimeRatio = (today.getTime() - startedAt.getTime());
@@ -82,9 +122,16 @@ onMounted(() => {
 .acompanhamento {
     &__header {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         margin-left: 0px;
         margin-right: auto;
+    }
+
+    &__legend {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0px;
+        width: 30%;
     }
 
     &__content {
@@ -114,18 +161,20 @@ onMounted(() => {
         overflow-y: auto;
         margin: auto;
 
-        span {
-            width: 30px;
-            height: 30px;
-            display: block;
-            margin: auto;
-            border-radius: 30px;
-        }
-
         td,
         th {
             padding: 0px 15px;
         }
     }
+
+    span {
+        width: 30px;
+        height: 30px;
+        display: block;
+        margin: auto;
+        border-radius: 30px;
+    }
+
+
 }
 </style>
