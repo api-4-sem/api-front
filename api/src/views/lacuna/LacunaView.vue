@@ -1,22 +1,22 @@
 <template>
     <div class="lacuna">
         <div class="lacuna__header">
-            <h2>Lacunas e Habilidades</h2>
+            <h4>Lacunas e Habilidades</h4>
         </div>
         <div class="lacuna__content">
             <div class="lacuna__card">
-              <!--  <select v-model="selected">
-            </select>-->
             <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option disabled value="">Escolha um item</option>
-                <option v-for="item in listmodal" :key="item.id" :value="item.id">{{ item.desc
+                <option disabled value="selected"></option>
+                <option v-for="item in listmodal" :key="item.id" :value="item.id">{{ item.nome
         }}
         </option>
       </select>
             </div>
             <div class="lacuna__card1">
-                <h1>Trilha</h1>
-                <h3><i>Application Integration</i></h3>
+                <h3>Trilha 
+                    <br>
+                    <small class="text-muted"><i>Application Integration</i></small>
+                </h3>
             </div>
     </div>
 </div>
@@ -30,7 +30,12 @@ import axios from 'axios';
 
 })
 export default class LacunaView extends Vue {
-    listmodal = [];
+    listmodal = [
+        {
+            id:0,
+            nome:''
+        }
+    ];
 
     //*links back-front
     created() {
@@ -40,7 +45,8 @@ export default class LacunaView extends Vue {
     getColaboradores(){
         axios.get("colaborador/1")
             .then(x => {
-                console.log(x);
+                console.log(x.data);
+                this.listmodal = (x.data);
             })
     }
 }
@@ -79,35 +85,6 @@ export default class LacunaView extends Vue {
         box-shadow: 0px 5px 7px #cec9c9;
     }
     
-    h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-    h2 {
-    display: block;
-    font-size: 1.2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    }
-
-    h3 {
-    display: flex;
-    font-size: 1em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    justify-content: center;
-
-    }
 }
 
 </style>

@@ -2,7 +2,7 @@
     <div>
         <h2 style="width: 1099px; margin: 1rem auto; text-align: left;">Visualização de Dados</h2>
         <div class="container">
-            <select class="select" @change="getProgresso($event.target?.value)">
+            <select class="select" id="select_visu" @change="getProgresso($event.target?.value)">
                 <option :value="0">Selecione Parceiro...</option>
                 <option v-for="colaborador in listaDeColaboradores" :key="colaborador.id" :value="colaborador.id">
                     {{ colaborador.nome }} #{{ colaborador.id }}
@@ -91,7 +91,7 @@ export default class VisualizacaoView extends Vue {
 </script>
 
 <style>
-select {
+#select_visu {
     opacity: 1;
     background-color: #D4D3D3;
     border-radius: 8px;

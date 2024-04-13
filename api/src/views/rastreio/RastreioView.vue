@@ -4,7 +4,7 @@
 
     <div class="container">
 
-      <select class="select" v-model="selectedParceiro" @change="filtroNomeParceiro(selectedParceiro)">
+    <select id="select_visu" class="select" v-model="selectedParceiro" @change="filtroNomeParceiro(selectedParceiro)">
         <option value="0">Cancelar filtro</option>
         <option v-for="nome in nomeColaborador" :key="nome.id" :value="nome.id">{{ nome.nome }}</option>
       </select>
@@ -170,7 +170,7 @@ td {
   padding-bottom: 20px;
 }
 
-select {
+#select_visu {
   position: absolute;
   width: 110px;
   height: 35px;
