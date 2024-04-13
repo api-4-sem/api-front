@@ -140,7 +140,6 @@ export default class RastreioView extends Vue {
   }
 
   solicitarFeedback(colaboradorId: number) {
-    console.log('sending to ->', colaboradorId)
     axios.post("feedback/" + colaboradorId).then((r) => {
       Swal.fire({
         html: `Feedback solicitado ao parceiro`,
