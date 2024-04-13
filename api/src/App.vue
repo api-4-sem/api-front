@@ -5,13 +5,11 @@
         <img src="./assets/logo.png">
       </div>
       <div class="menu__links">
-        <router-link to="/">
-          Rastreio
-        </router-link>
         <router-link to="/trilha">Trilha</router-link>
         <router-link to="/acompanhamento">Acompanhamento</router-link>
+        <router-link to="/rastreio">Rastreio</router-link>
         <router-link to="/habilidade">Habilidades</router-link>
-  
+
       </div>
     </nav>
 
@@ -65,7 +63,7 @@ body {
   margin-left: 25px;
   display: flex;
   align-content: center;
-  
+
   img {
     height: 47px;
     margin: auto 0;
@@ -76,10 +74,11 @@ body {
   margin: 0 auto;
   display: flex;
   width: 100%;
-  
+
   align-items: center;
   flex-direction: row;
   text-align: center;
+
   a {
     color: white;
     text-decoration: none;
@@ -87,14 +86,15 @@ body {
     margin: 0 15px;
     padding-left: 15px;
   }
-  justify-content: space-around; /* Distribui os itens igualmente */
+
+  justify-content: space-around;
 }
 
 
 
 .content {
   flex: 1;
-  padding: 60px 20px 0 0px;
+  padding: 60px 20px 0 20px;
 }
 
 .footer {
@@ -107,7 +107,28 @@ body {
 
   img {
     margin-right: 20px;
-    
+
   }
+}
+
+table {
+  --bs-table-color-type: initial !important;
+  --bs-table-bg-type: initial !important;
+  --bs-table-color-state: initial !important;
+  --bs-table-bg-state: initial !important;
+  --bs-table-color: initial !important;
+  --bs-table-bg: initial !important;
+  --bs-table-border-color: initial !important;
+  --bs-table-accent-bg: transparent !important;
+  --bs-table-striped-color: initial !important;
+  --bs-table-striped-bg: initial !important;
+  --bs-table-active-color: initial !important;
+  --bs-table-active-bg: initial !important;
+  --bs-table-hover-color: initial !important;
+  --bs-table-hover-bg: initial !important;
+  width: 100%;
+  margin-bottom: 1rem;
+  vertical-align: top;
+  border-color: var(--bs-table-border-color);
 }
 </style>

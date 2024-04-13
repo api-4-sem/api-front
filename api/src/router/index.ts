@@ -1,6 +1,12 @@
-import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+  RouteRecordRaw,
+} from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import RastreioView from "../views/rastreio/RastreioView.vue";
+import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,16 +17,20 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/acompanhamento",
     name: "acompanhamento",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: RastreioView
+    component: AcompanhamentoView,
+  },
+  {
+    path: "/rastreio",
+    name: "rastreio",
+    component: RastreioView,
   },
   {
     path: "/visualizacao",
     name: "visualizacao",
     component: () =>
-      import(/* webpackChunkName: "visualizacao" */ "../views/visualizacao/VisualizacaoView.vue"),
+      import(
+        /* webpackChunkName: "visualizacao" */ "../views/visualizacao/VisualizacaoView.vue"
+      ),
   },
 ];
 
