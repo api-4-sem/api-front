@@ -7,7 +7,7 @@
             <div class="lacuna__card">
               <!--  <select v-model="selected">
             </select>-->
-            <select class="form-select" aria-label=".form-select-lg example">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                 <option disabled value="">Escolha um item</option>
                 <option v-for="item in listmodal" :key="item.id" :value="item.id">{{ item.desc
         }}
@@ -24,19 +24,24 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import 'axios' from 'axios';
+import axios from 'axios';
 
 @Options({
 
 })
 export default class LacunaView extends Vue {
-    listmodal = [
-{
-    id: 1,
-    desc:""
-}    ];
+    listmodal = [];
+
+    //*links back-front
     created() {
-        console.log("im here")
+        this.getColaboradores();
+    }
+
+    getColaboradores(){
+        axios.get("colaborador/1")
+            .then(x => {
+                console.log(x);
+            })
     }
 }
 </script>
