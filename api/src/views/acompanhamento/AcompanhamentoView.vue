@@ -58,7 +58,7 @@
                                     <span class="bg-danger">&nbsp;</span>
                                 </td>
                                 <td>
-                                    Perto da Expiração
+                                    Perto da expirar
                                 </td>
                             </tr>
                             <tr>
@@ -74,7 +74,7 @@
                                     <span class="bg-success">&nbsp;</span>
                                 </td>
                                 <td>
-                                    Longe de Expirar
+                                    Longe de expirar
                                 </td>
                             </tr>
                         </tbody>
