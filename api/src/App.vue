@@ -5,11 +5,9 @@
         <img src="./assets/logo.png">
       </div>
       <div class="menu__links">
-        <router-link to="/trilha">Trilha</router-link>
-        <router-link to="/acompanhamento">Acompanhamento</router-link>
         <router-link to="/rastreio">Rastreio</router-link>
+        <router-link to="/acompanhamento">Acompanhamento</router-link>
         <router-link to="/habilidade">Habilidades</router-link>
-
       </div>
     </nav>
 

@@ -27,7 +27,7 @@
                 </button>
               </td>
               <td>
-                <router-link to="/trilhas">
+                <router-link :to="'/trilha/'+nome.id">
                   <button type="button" class="btn btn-outline-primary">
                     Acompanhar trilhas
                   </button>

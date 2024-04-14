@@ -5,14 +5,6 @@
         </div>
         <div class="lacuna__content">
             <div class="lacuna__card">
-            <select class="form-select form-select-sm" @change="getProgressoTrilhas()" v-model="colaboradorSelecionado" aria-label=".form-select-sm example">
-                <option disabled value="selected"></option>
-                <option v-for="item in listmodal" :key="item.id" :value="item.id">{{ item.nome
-        }}
-        </option>
-      </select>
-            </div>
-            <div class="lacuna__card1">
                 <h3>Trilhas</h3>
                 <br>
                     <div class="lacuna__trilha" v-for="(trilha,i) in integracoes">
@@ -32,20 +24,29 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><span v-for="naoConcluida in trilha.expertisesPorTrilha.nome">{{naoConcluida}}</span><br/></td>
-                                        <td><span  v-for="concluida in trilha.expertisesConcluidas.nome">{{concluida}}</span><br/></td>
+                                        <td>
+                                            <span v-for="naoConcluida in trilha.expertisesPorTrilha.nome">
+                                                {{naoConcluida}}<br/>
+                                            </span>
+                                            
+                                        </td>
+                                        <td>
+                                            <span  v-for="concluida in trilha.expertisesConcluidas.nome">
+                                                {{concluida}}<br/>
+                                            </span></td>
                                     </tr>
                                 </tbody>
                         </table>
                         <br>
                         <div class="title" style="display: flex; justify-content: start; width: 100%;">
-                            <span align="left">Percentagem de conclusão da trilha</span>
+                            <span align="left">
+                                Percentagem de conclusão da trilha - {{ 100*(trilha.expertisesConcluidas.id.length / trilha.expertisesPorTrilha.id.length) + '%' }}
+                            </span>
                         </div>
                         <div id="lacuna__percentage" style="width: 100%; display: flex;">
-                            <div class="green" :id="'percentagem-ok'+i">&nbsp;</div>
+                            <div class="blue" :id="'percentagem-ok'+i">&nbsp;</div>
                             <div class="red" :id="'percentagem-nok'+i">&nbsp;</div>
                         </div>
-                        <!-- <canvas :id="'trilha'+i"></canvas> -->
                     </div>
             </div>
     </div>
@@ -55,30 +56,17 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import axios from 'axios';
-import { Chart, ChartItem } from "chart.js/auto";
-
 @Options({
 
 })
 export default class LacunaView extends Vue {
-
     colaboradorSelecionado = 0;
     integracoes = []
-    listmodal = [
-        {
-            id:0,
-            nome:''
-        }
-    ];
 
     created() {
-        let empresaId = +this.$route.params.id 
-        this.getColaboradores(empresaId);
-    }
-
-    getColaboradores(idEmpresa: number){
-        axios.get("colaborador/"+idEmpresa)
-            .then(x => this.listmodal = (x.data))
+        this.colaboradorSelecionado = +this.$route.params.id
+        console.log(this.colaboradorSelecionado)
+        this.getProgressoTrilhas() 
     }
 
     getProgressoTrilhas(){
@@ -90,10 +78,9 @@ export default class LacunaView extends Vue {
                     let nok = "percentagem-nok"+i;
                     let porcentagemConclusao = (inte.expertisesConcluidas.id.length / inte.expertisesPorTrilha.id.length);
                     setTimeout(() => {
-                        console.log(ok, nok)
                         document.getElementById(ok)!.style.width = `${(porcentagemConclusao) * 100}%`
                         document.getElementById(nok)!.style.width = `${(1 - porcentagemConclusao) * 100}%`
-                    }, 1000)
+                    }, 500)
                     
                 })
             })
@@ -117,24 +104,15 @@ export default class LacunaView extends Vue {
         flex-direction: row;
     }
 
-    .green{
-        background-color: greenyellow;
+    .blue{
+        background-color: blue;
     }
 
     .red{
         background-color: red;
     }
-
+    
     &__card {
-        width: 20%;
-        border-radius: 8px;
-        min-height: 250px;
-        padding: 20px;
-        background-color: #ededed;
-        box-shadow: 0px 5px 7px #cec9c9;
-    }
-
-    &__card1 {
         flex: 1;
         border-radius: 8px;
         min-height: 250px;

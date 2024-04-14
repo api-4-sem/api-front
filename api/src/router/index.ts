@@ -16,8 +16,8 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path:"/lacuna/:id",
-    name: "lacuna",
+    path:"/trilha/:id",
+    name: "trilha",
     component: LacunaView
   },
   {
