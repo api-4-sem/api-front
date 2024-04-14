@@ -1,16 +1,15 @@
 <template>
   <div class="home">
-    <RastreioView></RastreioView>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import RastreioView from "./rastreio/RastreioView.vue";
+import LacunaView from "./lacuna/LacunaView.vue";
 
 @Options({
   components: {
-    RastreioView,
+    LacunaView,
   },
 })
 export default class HomeView extends Vue { }

@@ -6,6 +6,7 @@ import {
 } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import RastreioView from "../views/rastreio/RastreioView.vue";
+import LacunaView from "@/views/lacuna/LacunaView.vue";
 import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -13,6 +14,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "home",
     component: HomeView,
+  },
+  {
+    path:"/trilha/:id",
+    name: "trilha",
+    component: LacunaView
   },
   {
     path: "/acompanhamento",

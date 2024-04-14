@@ -9,8 +9,8 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>Empresa</th>
                             <th>Parceiro</th>
-                            <th>Usuario</th>
                             <th>Progresso</th>
                         </tr>
                     </thead>
