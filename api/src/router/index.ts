@@ -6,11 +6,8 @@ import {
 } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import RastreioView from "../views/rastreio/RastreioView.vue";
-<<<<<<< HEAD
 import LacunaView from "@/views/lacuna/LacunaView.vue";
-=======
 import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
->>>>>>> develop
 
 const routes: Array<RouteRecordRaw> = [
   {

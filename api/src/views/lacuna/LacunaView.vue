@@ -13,12 +13,10 @@
       </select>
             </div>
             <div class="lacuna__card1">
-                <h3>Trilha</h3>
+                <h3>Trilhas</h3>
                 <br>
-                <div v-for="trilha in integracoes">
-                    <div class="lacuna__trilha">
-                        <table class="table table-striped">
-                            <tbody>
+                    <div class="lacuna__trilha" v-for="(trilha,i) in integracoes">
+                        <table align="center" class="table table-striped" style="margin:auto">
                                 <thead>
                                     <tr>
                                         <th  colspan="2"><i>{{ trilha.nomeTrilha }}</i></th>
@@ -38,11 +36,17 @@
                                         <td><span  v-for="concluida in trilha.expertisesConcluidas.nome">{{concluida}}</span><br/></td>
                                     </tr>
                                 </tbody>
-                            </tbody>
                         </table>
-                        <canvas id="trilha"></canvas>
+                        <br>
+                        <div class="title" style="display: flex; justify-content: start; width: 100%;">
+                            <span align="left">Percentagem de conclusão da trilha</span>
+                        </div>
+                        <div id="lacuna__percentage" style="width: 100%; display: flex;">
+                            <div class="green" :id="'percentagem-ok'+i">&nbsp;</div>
+                            <div class="red" :id="'percentagem-nok'+i">&nbsp;</div>
+                        </div>
+                        <!-- <canvas :id="'trilha'+i"></canvas> -->
                     </div>
-                </div>
             </div>
     </div>
 </div>
@@ -57,30 +61,15 @@ import { Chart, ChartItem } from "chart.js/auto";
 
 })
 export default class LacunaView extends Vue {
+
+    colaboradorSelecionado = 0;
+    integracoes = []
     listmodal = [
         {
             id:0,
             nome:''
         }
     ];
-    integracoes = []
-    colaboradorSelecionado = 0;
-    data = {
-        labels: "Completude",
-        datasets: [{
-            axis: 'y',
-            label: 'Completude',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-            'rgb(255, 99, 132)',
-            ],
-            borderWidth: 1
-        }]
-    } as any;
 
     created() {
         let empresaId = +this.$route.params.id 
@@ -96,15 +85,20 @@ export default class LacunaView extends Vue {
         axios.get('progresso-colaborador/habilidades/'+this.colaboradorSelecionado)
             .then(x => {
                 this.integracoes = x.data
-                var chart = new Chart("trilha", {
-                    type: 'bar',
-                    data: this.data,
-                    options:{
-                        indexAxis: 'y'
-                    } 
-                });
+                this.integracoes.forEach((inte:any, i)=> {
+                    let ok = "percentagem-ok"+i;
+                    let nok = "percentagem-nok"+i;
+                    let porcentagemConclusao = (inte.expertisesConcluidas.id.length / inte.expertisesPorTrilha.id.length);
+                    setTimeout(() => {
+                        console.log(ok, nok)
+                        document.getElementById(ok)!.style.width = `${(porcentagemConclusao) * 100}%`
+                        document.getElementById(nok)!.style.width = `${(1 - porcentagemConclusao) * 100}%`
+                    }, 1000)
+                    
+                })
             })
     }
+
 }
 </script>
 
@@ -121,6 +115,14 @@ export default class LacunaView extends Vue {
         height: inherit;
         display: flex;
         flex-direction: row;
+    }
+
+    .green{
+        background-color: greenyellow;
+    }
+
+    .red{
+        background-color: red;
     }
 
     &__card {
@@ -143,9 +145,15 @@ export default class LacunaView extends Vue {
     
     &__trilha{
         display: flex;
+        align-items: center; 
         flex-direction: column;
         width: 100%;
+        height: 50%;
     }
+
+     th{
+            width: 50%;
+        }
 }
 
 </style>

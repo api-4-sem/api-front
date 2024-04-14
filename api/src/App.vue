@@ -95,6 +95,7 @@ body {
 .content {
   flex: 1;
   padding: 60px 20px 0 20px;
+  margin-bottom: 20px;
 }
 
 .footer {
