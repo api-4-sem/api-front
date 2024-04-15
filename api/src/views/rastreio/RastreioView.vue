@@ -114,7 +114,7 @@ export default class RastreioView extends Vue {
               title: "Status",
               html: `
               <p>Nome da trilha: ${item.nomeDatrilha}</p>
-              <p>Progresso do colaborador: ${item.porcentagemEmanadamento}</p>
+              <p>Progresso do colaborador: ${item.porcentagemEmanadamento} %</p>
             `,
               showCloseButton: true,
               showConfirmButton: false,
