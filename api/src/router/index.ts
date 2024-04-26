@@ -8,6 +8,7 @@ import HomeView from "../views/HomeView.vue";
 import RastreioView from "../views/rastreio/RastreioView.vue";
 import LacunaView from "@/views/lacuna/LacunaView.vue";
 import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
+import cadastroP from "@/views/cadastro/CadastroParceiros.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -29,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/rastreio",
     name: "rastreio",
     component: RastreioView,
+  },
+  {
+    path: "/cadastroparceiros",
+    name: "cadastro",
+    component: cadastroP,
   },
   {
     path: "/visualizacao",
