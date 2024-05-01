@@ -2,7 +2,6 @@
     <div class="notificacao">
         <div class="notificacao__header">
             <h2>Configuração de Notificações</h2>
-
         </div>
         <div class="notificacao__content">
             <div class="notificacao__card">
@@ -10,47 +9,63 @@
                     <div class="notificacao__row-header">
                         <h4>Solicitações</h4>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="notificacao__input">
                         <h6>Dias para solicitar feedback</h6>
-                        <input class="form-control" v-model="feedback">
+                        <input class="form-control" v-model="feedback" />
                     </div>
                 </div>
                 <div class="notificacao__row">
                     <div class="notificacao__row-header">
                         <h4>Avisos</h4>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="notificacao__input">
                         <h6>Dias para avisar sobre vencimento da trilha</h6>
-                        <input class="form-control" v-model="vencimentoTrilha">
+                        <input class="form-control" v-model="vencimentoTrilha" />
                     </div>
                 </div>
                 <div class="notificacao__row--right">
-                    <button class="btn btn-outline-success">
-                        Salvar
-                    </button>
+                    <button v-on:click="atualizar()" class="btn btn-outline-success">Salvar</button>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
+import axios from "axios";
+import Swal from "sweetalert2";
+import { onMounted, ref } from "vue";
+let vencimentoTrilha = ref<number>(0);
+let feedback = ref<number>(0);
 
-import axios from 'axios'
-import { onMounted, ref } from 'vue';
-vencimentoTrilha = 0
-feedback = 0
-
+function atualizar() {
+    const request = [
+        {
+            frequenciaDias: vencimentoTrilha.value,
+            tipoNotificacao: "AVISO",
+        },
+        {
+            frequenciaDias: feedback.value,
+            tipoNotificacao: "FEEDBACK",
+        },
+    ];
+    axios.put("configuracao", request).then((x) => {
+        Swal.fire({
+            title: "Sucesso",
+            text: "Configurações salvas com sucesso",
+            icon: "success",
+            showCloseButton: true,
+        });
+    });
+}
 
 onMounted(() => {
-
-    axios.get("configuracao")
-        .then(x => {
-            console.log(x)
-        })
-})
-
+    axios.get("configuracao").then((x) => {
+        vencimentoTrilha.value = +x.data.filter((x: any) => x.tipo === "AVISO").map((x: any) => x.frequencia)[0]
+        feedback.value = +x.data.filter((x: any) => x.tipo === "FEEDBACK").map((x: any) => x.frequencia)[0]
+    });
+});
 </script>
 
 <style lang="scss">
