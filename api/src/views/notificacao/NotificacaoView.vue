@@ -13,7 +13,7 @@
                     <hr>
                     <div class="notificacao__input">
                         <h6>Dias para solicitar feedback</h6>
-                        <input class="form-control">
+                        <input class="form-control" v-model="feedback">
                     </div>
                 </div>
                 <div class="notificacao__row">
@@ -23,7 +23,7 @@
                     <hr>
                     <div class="notificacao__input">
                         <h6>Dias para avisar sobre vencimento da trilha</h6>
-                        <input class="form-control">
+                        <input class="form-control" v-model="vencimentoTrilha">
                     </div>
                 </div>
                 <div class="notificacao__row--right">
@@ -39,11 +39,16 @@
 
 import axios from 'axios'
 import { onMounted, ref } from 'vue';
-
+vencimentoTrilha = 0
+feedback = 0
 
 
 onMounted(() => {
 
+    axios.get("configuracao")
+        .then(x => {
+            console.log(x)
+        })
 })
 
 </script>
