@@ -73,13 +73,16 @@ export default class CadastroParceiros extends Vue {
     }
 
     const parceiro = {
+      id:2,
+      codigo:2,
       nome: this.nome,
       cidade: this.cidade,
       pais: this.pais,
-      email: this.email,
+      adminNome:this.nome,
+      adminEmail: this.email,
     };
 
-    axios.post('/api/carregar-empresas', parceiro)
+    axios.post('/criar-empresas', parceiro)
       .then(response => {
         console.log('Parceiro cadastrado com sucesso:', response.data);
         alert("Parceiro cadastrado com sucesso ");
