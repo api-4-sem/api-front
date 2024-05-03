@@ -10,6 +10,7 @@ import LacunaView from "@/views/lacuna/LacunaView.vue";
 import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
 import cadastroP from "@/views/cadastro/CadastroParceiros.vue";
 import visu from "@/views/cadastro/visualizacaoParceiros.vue"
+import NotificacaoView from "@/views/notificacao/NotificacaoView.vue";
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -34,6 +35,7 @@ const routes: Array<RouteRecordRaw> = [
     component: RastreioView,
   },
   {
+
     path: "/cadastroparceiros",
     name: "cadastro",
     component: cadastroP,
@@ -42,6 +44,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/visualizacaoparceiro",
     name: "visualizacaop",
     component: visu,
+
+    path: "/notificacoes",
+    name: "notificacoes",
+    component: NotificacaoView,
+
   },
   {
     path: "/visualizacao",
