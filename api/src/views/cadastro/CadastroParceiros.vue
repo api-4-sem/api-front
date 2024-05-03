@@ -25,13 +25,19 @@
             <label for="email">Email</label>
             <input type="email" id="email" name="email" v-model="email" required>
           </div>
+          <div class="form-group">
+            <label2 for="nome" >Nome da empresa </label2>
+            <input  type="text" id="adminNome" name="adminNome" v-model="adminNome" required>
+          </div>
+          <div class="form-group" style="margin-right: 650px;">
+            <label2 for="nome" >Código </label2>
+            <input  type="text" id="codigo" name="codigo" v-model="codigo" required>
+          </div>
           
         </div>
       </form>
-      <div class="form-group">
-        <label2 for="nome" >Nome da empresa </label2>
-        <input  type="text" id="nome" name="nome" v-model="adminNome" required>
-      </div>
+      
+      
     </div>
   </div>
 </template>
@@ -54,6 +60,7 @@ export default class CadastroParceiros extends Vue {
   pais: string = "";
   email: string = "";
   adminNome:string="";
+  codigo:string= "";
   paises: string[] = ['Brasil', 'Estados Unidos', 'Canadá', 'Reino Unido', 'França', 'China'];
   
   get listaPaises(): string {
@@ -62,7 +69,7 @@ export default class CadastroParceiros extends Vue {
 
 
   cadastrarParceiro(): void {
-    if (!this.nome || !this.cidade || !this.pais || !this.email) {
+    if (!this.nome || !this.cidade || !this.pais || !this.email|| !this.adminNome || !this.codigo) {
       Swal.fire({
             title: "ops...",
             text: "Por favor, preencha todos os campos.",
@@ -100,10 +107,19 @@ export default class CadastroParceiros extends Vue {
         });
       return;
     }
+    const codigoNumero = Number(this.codigo);
+    if (isNaN(codigoNumero)) {
+      Swal.fire({
+            title: "ops...",
+            text: "Por favor, insira um código válido (números apenas).",
+            icon: "warning",
+            showCloseButton: true,
+        });
+      return;
+    }
 
     const parceiro = {
-      id:6,
-      codigo:6,
+      codigo:this.codigo,
       nome: this.nome,
       cidade: this.cidade,
       pais: this.pais,
@@ -153,6 +169,7 @@ export default class CadastroParceiros extends Vue {
     this.cidade = "";
     this.pais = "";
     this.email = "";
+    this.codigo="";
   }
 }
 </script>
@@ -212,7 +229,7 @@ export default class CadastroParceiros extends Vue {
     }
     label2 {
       margin-bottom: 0.5rem;
-      margin-right: 76%;
+      margin-right: 5%;
       
     }
 
