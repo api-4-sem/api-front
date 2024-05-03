@@ -44,6 +44,8 @@ const routes: Array<RouteRecordRaw> = [
     path: "/visualizacaoparceiro",
     name: "visualizacaop",
     component: visu,
+  },
+  {
 
     path: "/notificacoes",
     name: "notificacoes",
