@@ -1,12 +1,24 @@
 <template>
     <div>
-        
         <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Visualização de Parceiros</h2>
         <div class="container">
+            <div class="parceiro-header">
+                <span class="header-item">Colaborador</span>
+                <span class="header-item">Cidade</span>
+                <span class="header-item">Código</span>
+                <span class="header-item">País</span>
+                <span class="header-item">Nome do Administrador</span>
+                <span class="header-item">E-mail do Administrador</span>
+            </div>
             <div v-if="listaParceiros && listaParceiros.length > 0">
-                <label v-for="parceiro in listaParceiros" :key="parceiro.id">
-                    {{ parceiro.id }} - {{ parceiro.nome }} -  {{ parceiro.cidade  }} - {{ parceiro.codigo }} - {{ parceiro.pais  }} - {{ parceiro.adminNome }} - {{ parceiro.adminEmail  }}
-                </label>
+                <div class="parceiro" v-for="parceiro in listaParceiros" :key="parceiro.id">
+                    <span class="parceiro-item">{{ parceiro.nome }}</span>
+                    <span class="parceiro-item">{{ parceiro.cidade }}</span>
+                    <span class="parceiro-item">{{ parceiro.codigo }}</span>
+                    <span class="parceiro-item">{{ parceiro.pais }}</span>
+                    <span class="parceiro-item">{{ parceiro.adminNome }}</span>
+                    <span class="parceiro-item">{{ parceiro.adminEmail }}</span>
+                </div>
             </div>
             <div v-else>
                 Nenhum parceiro encontrado.
@@ -19,7 +31,7 @@
 import axios from "axios";
 import { Options, Vue } from "vue-class-component";
 import { RouterLink } from "vue-router";
-import Swal from "sweetalert2";
+
 
 @Options({
   name: "visualizacaoParceiros",
@@ -48,17 +60,40 @@ export default class VisualizacaoParceiros extends Vue {
 
 <style lang="scss">
 .container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 1099px;
-  min-height: 60vh;
-  margin: auto;
-  border-radius: 20px;
-  background-color: #ededed;
-  opacity: 1;
-  gap: 3rem;
-  padding: 2rem 5rem;
-  box-shadow: 3px 5px 10px #555;
-}
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    min-height: 60vh;
+    margin: auto;
+    border-radius: 20px;
+    background-color: #ededed;
+    opacity: 1;
+    padding: 2rem 5rem;
+    box-shadow: 3px 5px 10px #555;
+  }
+  
+  .parceiro-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .header-item {
+    width: calc(100% / 6); 
+  }
+  
+  .parceiro {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-top: 0.2rem;
+    padding-bottom: 0.8rem;
+  }
+  
+  .parceiro-item {
+    width: calc(100% / 6); 
+  }
 </style>

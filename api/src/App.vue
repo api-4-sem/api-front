@@ -9,7 +9,7 @@
         <router-link to="/acompanhamento">Acompanhamento</router-link>
         <router-link to="/visualizacao">Habilidades</router-link>
         <router-link to="/cadastroparceiros">Cadastro de Parceiros</router-link>
-        <router-link to="/visualizacaoparceiro">Cadastro de Parceiros</router-link>
+        <router-link to="/visualizacaoparceiro">Lista de Parceiros</router-link>
       </div>
     </nav>
 
