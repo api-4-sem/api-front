@@ -1,14 +1,11 @@
-import {
-  createRouter,
-  createWebHashHistory,
-  createWebHistory,
-  RouteRecordRaw,
-} from "vue-router";
+import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
+import AvaliacaoView from "@/views/avaliacao/AvaliacaoView.vue";
+import LacunaView from "@/views/lacuna/LacunaView.vue";
+import NotificacaoView from "@/views/notificacao/NotificacaoView.vue";
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
+
 import HomeView from "../views/HomeView.vue";
 import RastreioView from "../views/rastreio/RastreioView.vue";
-import LacunaView from "@/views/lacuna/LacunaView.vue";
-import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
-import NotificacaoView from "@/views/notificacao/NotificacaoView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -17,9 +14,9 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path:"/trilha/:id",
+    path: "/trilha/:id",
     name: "trilha",
-    component: LacunaView
+    component: LacunaView,
   },
   {
     path: "/acompanhamento",
@@ -30,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/rastreio",
     name: "rastreio",
     component: RastreioView,
+  },
+  {
+    path: "/avaliacao",
+    name: "avalicao",
+    component: AvaliacaoView,
   },
   {
     path: "/notificacoes",
