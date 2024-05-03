@@ -5,7 +5,7 @@
         <div class="container">
             <div v-if="listaParceiros && listaParceiros.length > 0">
                 <label v-for="parceiro in listaParceiros" :key="parceiro.id">
-                    {{ parceiro.id }} - {{ parceiro.nome }}
+                    {{ parceiro.id }} - {{ parceiro.nome }} -  {{ parceiro.cidade  }} - {{ parceiro.codigo }} - {{ parceiro.pais  }} - {{ parceiro.adminNome }} - {{ parceiro.adminEmail  }}
                 </label>
             </div>
             <div v-else>
