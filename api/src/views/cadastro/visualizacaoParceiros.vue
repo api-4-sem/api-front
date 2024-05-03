@@ -3,11 +3,16 @@
         
         <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Visualização de Parceiros</h2>
         <div class="container">
-
+            <div v-if="listaParceiros && listaParceiros.length > 0">
+                <label v-for="parceiro in listaParceiros" :key="parceiro.id">
+                    {{ parceiro.id }} - {{ parceiro.nome }}
+                </label>
+            </div>
+            <div v-else>
+                Nenhum parceiro encontrado.
+            </div>
         </div>
     </div>
-
-
 </template>
 
 <script lang="ts">
@@ -22,13 +27,26 @@ import Swal from "sweetalert2";
     RouterLink,
   },
 })
-export default class visualizacaoParceiros extends Vue {}
+export default class VisualizacaoParceiros extends Vue {
+    listaParceiros: any[] = [];
 
+    async mounted() {
+        await this.getParceiros();
+    }
+
+    async getParceiros() {
+        try {
+            const response = await axios.get("carregar-empresas");
+            console.log(response.data);
+            this.listaParceiros = response.data;
+        } catch (error) {
+            console.log("Erro:", error);
+        }
+    }
+}
 </script>
 
 <style lang="scss">
-
-
 .container {
   position: relative;
   display: flex;
@@ -42,12 +60,5 @@ export default class visualizacaoParceiros extends Vue {}
   gap: 3rem;
   padding: 2rem 5rem;
   box-shadow: 3px 5px 10px #555;
-
-
-    
-    
-  }
-  
-
-
+}
 </style>
