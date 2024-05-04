@@ -8,8 +8,9 @@
         <router-link to="/rastreio">Rastreio</router-link>
         <router-link to="/acompanhamento">Acompanhamento</router-link>
         <router-link to="/visualizacao">Habilidades</router-link>
-        <router-link to="/cadastroparceiros">Cadastro de Parceiros</router-link>
         <router-link to="/visualizacaoparceiro">Lista de Parceiros</router-link>
+        <router-link to="/avaliacao">Avaliação de Parceiro</router-link>
+        <router-link to="/cadastroparceiros">Cadastro de Parceiros</router-link>
         <router-link to="/notificacoes">Configurações</router-link>
 
       </div>
@@ -50,9 +51,8 @@ body {
 
 .menu {
   background-color: #464444;
-  width: 100%;
+  width: 100vw;
   height: 60px;
-  gap: 20%;
   display: grid;
   grid-template-columns: auto;
   justify-items: center;

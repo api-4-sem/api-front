@@ -50,6 +50,7 @@ function atualizar() {
             tipoNotificacao: "FEEDBACK",
         },
     ];
+
     axios.put("configuracao", request).then((x) => {
         Swal.fire({
             title: "Sucesso",
