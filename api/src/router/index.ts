@@ -1,11 +1,14 @@
 import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
 import AvaliacaoView from "@/views/avaliacao/AvaliacaoView.vue";
 import LacunaView from "@/views/lacuna/LacunaView.vue";
+import cadastroP from "@/views/cadastro/CadastroParceiros.vue";
+import visu from "@/views/cadastro/visualizacaoParceiros.vue"
 import NotificacaoView from "@/views/notificacao/NotificacaoView.vue";
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import HomeView from "../views/HomeView.vue";
 import RastreioView from "../views/rastreio/RastreioView.vue";
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,9 +37,21 @@ const routes: Array<RouteRecordRaw> = [
     component: AvaliacaoView,
   },
   {
+    path: "/cadastroparceiros",
+    name: "cadastro",
+    component: cadastroP,
+  },
+  {
+    path: "/visualizacaoparceiro",
+    name: "visualizacaop",
+    component: visu,
+  },
+  {
+
     path: "/notificacoes",
     name: "notificacoes",
     component: NotificacaoView,
+
   },
   {
     path: "/visualizacao",

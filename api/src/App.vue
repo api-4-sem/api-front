@@ -8,8 +8,11 @@
         <router-link to="/rastreio">Rastreio</router-link>
         <router-link to="/acompanhamento">Acompanhamento</router-link>
         <router-link to="/visualizacao">Habilidades</router-link>
+        <router-link to="/visualizacaoparceiro">Lista de Parceiros</router-link>
         <router-link to="/avaliacao">Avaliação de Parceiro</router-link>
+        <router-link to="/cadastroparceiros">Cadastro de Parceiros</router-link>
         <router-link to="/notificacoes">Configurações</router-link>
+
       </div>
     </nav>
 
