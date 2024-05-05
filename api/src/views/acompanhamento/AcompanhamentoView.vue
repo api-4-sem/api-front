@@ -23,7 +23,7 @@
                                     <thead>
                                         <tr>
                                             <th>Trilha</th>
-                                            <th>Vencimento</th>
+                                            <th>Conclusão da Trilha</th>
                                             <th>Criticidade</th>
                                         </tr>
                                     </thead>
