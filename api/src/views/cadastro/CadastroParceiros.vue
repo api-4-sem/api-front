@@ -22,15 +22,11 @@
             </datalist>
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" v-model="email" required>
-          </div>
-          <div class="form-group">
             <label2 for="nome" >Nome do colaborador </label2>
             <input  type="text" id="adminNome" name="adminNome" v-model="adminNome" required>
           </div>
-          <div class="form-group" style="margin-right: 650px;">
-            <label2 for="nome" >Código </label2>
+          <div class="form-group" style="margin-right: 0px;">
+            <label2 for="nome" style="margin-right: 1000px;" >Código </label2>
             <input  type="text" id="codigo" name="codigo" v-model="codigo" required>
           </div>
           
