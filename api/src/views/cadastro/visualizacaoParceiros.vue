@@ -3,12 +3,11 @@
         <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Visualização de Parceiros</h2>
         <div class="container">
             <div class="parceiro-header">
-                <span class="header-item">Colaborador</span>
+                <span class="header-item">Parceiro</span>
                 <span class="header-item">Cidade</span>
                 <span class="header-item">Código</span>
                 <span class="header-item">País</span>
-                <span class="header-item">Nome do Administrador</span>
-                <span class="header-item">E-mail do Administrador</span>
+                <span class="header-item">Nome do Colaborador</span>
             </div>
             <div v-if="listaParceiros && listaParceiros.length > 0">
                 <div class="parceiro" v-for="parceiro in listaParceiros" :key="parceiro.id">
@@ -17,7 +16,6 @@
                     <span class="parceiro-item">{{ parceiro.codigo }}</span>
                     <span class="parceiro-item">{{ parceiro.pais }}</span>
                     <span class="parceiro-item">{{ parceiro.adminNome }}</span>
-                    <span class="parceiro-item">{{ parceiro.adminEmail }}</span>
                 </div>
             </div>
             <div v-else>
