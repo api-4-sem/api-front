@@ -90,6 +90,8 @@ export default class VisualizacaoView extends Vue {
 
     mounted() {
         this.getEmpresas();
+        this.getColaboradores();
+
     }
 
     download() {
@@ -102,9 +104,22 @@ export default class VisualizacaoView extends Vue {
     }
 
     async getColaboradores() {
-        const response = await axios.get("colaborador/"+this.empresaSelecionada);
-        this.listaDeColaboradores = response.data;
+    try {
+        const response1 = await axios.get("colaborador/1");
+        console.log("Primeira requisição:", response1.data);
+
+        const response2 = await axios.get("colaborador/2");
+        console.log("Segunda requisição:", response2.data);
+
+        const response3 = await axios.get("colaborador/3");
+        console.log("Terceira requisição:", response3.data);
+
+        this.listaDeColaboradores = [...response1.data, ...response2.data, ...response3.data];
+    } catch (error) {
+        console.error("Erro ao obter colaboradores:", error);
     }
+}
+
 
     async getEmpresas() {
         const response = await axios.get("carregar-empresas");
