@@ -7,7 +7,7 @@
       <form>
         <div class="form-row">
           <div class="form-group">
-            <label for="nome">Colaborador</label>
+            <label for="nome">Empresa</label>
             <input type="text" id="nome" name="nome" v-model="nome" required>
           </div>
           <div class="form-group">
@@ -26,7 +26,7 @@
             <input type="email" id="email" name="email" v-model="email" required>
           </div>
           <div class="form-group">
-            <label2 for="nome" >Nome da empresa </label2>
+            <label2 for="nome" >Nome do colaborador </label2>
             <input  type="text" id="adminNome" name="adminNome" v-model="adminNome" required>
           </div>
           <div class="form-group" style="margin-right: 650px;">
