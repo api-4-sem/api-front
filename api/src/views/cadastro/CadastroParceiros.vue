@@ -7,7 +7,7 @@
       <form>
         <div class="form-row">
           <div class="form-group">
-            <label for="nome">Empresa</label>
+            <label for="nome">Parceiro</label>
             <input type="text" id="nome" name="nome" v-model="nome" required>
           </div>
           <div class="form-group">
