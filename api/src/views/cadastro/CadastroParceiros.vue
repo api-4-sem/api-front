@@ -22,18 +22,19 @@
             </datalist>
           </div>
           <div class="form-group">
-            <label2 for="nome" >Nome do colaborador </label2>
-            <input  type="text" id="adminNome" name="adminNome" v-model="adminNome" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" v-model="email" required>
           </div>
-          <div class="form-group" style="margin-right: 0px;">
-            <label2 for="nome" style="margin-right: 1000px;" >Código </label2>
-            <input  type="text" id="codigo" name="codigo" v-model="codigo" required>
+          <div class="form-group">
+            <label for="adminNome">Nome do colaborador</label>
+            <input type="text" id="adminNome" name="adminNome" v-model="adminNome" required>
           </div>
-          
+          <div class="form-group">
+            <label for="codigo">Código</label>
+            <input type="text" id="codigo" name="codigo" v-model="codigo" required>
+          </div>
         </div>
       </form>
-      
-      
     </div>
   </div>
 </template>
@@ -237,7 +238,9 @@ export default class CadastroParceiros extends Vue {
       width: 300px;
     }
     
-    
+    .form-group:nth-last-child(-n+3) {
+      width: calc(100% / 3 - 1rem); 
+    }
   }
   
 }
