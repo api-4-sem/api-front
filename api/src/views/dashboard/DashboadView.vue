@@ -26,36 +26,27 @@
 <script lang="ts">
 import { Vue } from 'vue-class-component';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
+import axios from 'axios';
 
 Chart.register(...registerables);
 
 export default class Dashboard extends Vue {
-    categoryData = {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
-        datasets: [{
-            label: 'Meu Primeiro Dataset',
-            data: [65, 59, 80, 80, 56, 55, 40],
-            backgroundColor: [
-            ],
-            borderColor: [
-            ],
-            borderWidth: 1
-        }]
-    };
+    selectedCompany: number = 0;
 
-    pieData = {
-        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-        datasets: [
-            {
-                label: 'Dataset 1',
-                data: [1, 934, 129, 129],
-            }
-        ]
-    };
-    createPieChartConfig() {
+    createPieChartConfig(data: any[]) {
+        const pieData = {
+            labels: ['Concluído', 'Não Concluído'],
+            datasets: [
+                {
+                    label: '',
+                    data: [100, 934],
+                }
+            ]
+        };
+
         return {
             type: 'pie',
-            data: this.pieData,
+            data: pieData,
             options: {
                 responsive: true,
                 plugins: {
@@ -69,9 +60,22 @@ export default class Dashboard extends Vue {
     }
 
     createCategoryChartConfig() {
+        const categoryData = {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
+            datasets: [{
+                label: 'Meu Primeiro Dataset',
+                data: [65, 59, 80, 80, 56, 55, 40],
+                backgroundColor: [
+                ],
+                borderColor: [
+                ],
+                borderWidth: 1
+            }]
+        };
+
         return {
             type: 'bar',
-            data: this.categoryData,
+            data: categoryData,
             options: {
                 scales: {
                     y: {
@@ -91,7 +95,11 @@ export default class Dashboard extends Vue {
 
     mounted() {
         this.createChart("category", this.createCategoryChartConfig())
-        this.createChart("pie", this.createPieChartConfig())
+
+        axios.get(`dash/expertises/empresa/${this.selectedCompany}/trilha/1`)
+            .then(data => {
+                this.createChart("pie", this.createPieChartConfig(data.data))
+            })
     }
 }
 </script>
@@ -123,11 +131,12 @@ export default class Dashboard extends Vue {
         box-shadow: 0px 5px 7px #cec9c9;
     }
 
-    .charts{
-        display:flex;
+    .charts {
+        display: flex;
         justify-content: space-between;
         height: 400px;
     }
+
     .chart-pie,
     .chart-category {
         display: flex;
