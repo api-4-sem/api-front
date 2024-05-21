@@ -8,6 +8,7 @@ import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } 
 
 import HomeView from "../views/HomeView.vue";
 import RastreioView from "../views/rastreio/RastreioView.vue";
+import Dashboard from "../views/Dashboard/Dashboad.vue";
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -51,6 +52,13 @@ const routes: Array<RouteRecordRaw> = [
     path: "/notificacoes",
     name: "notificacoes",
     component: NotificacaoView,
+
+  },
+  {
+
+    path: "/Dashboard",
+    name: "Dashboard",
+    component: Dashboard,
 
   },
   {
