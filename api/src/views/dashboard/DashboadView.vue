@@ -30,17 +30,42 @@ import axios from 'axios';
 
 Chart.register(...registerables);
 
-export default class Dashboard extends Vue {
-    selectedCompany: number = 0;
+interface ProgressoItem {
+    progresso: {
+        [key: string]: {
+            expertiseId: number;
+            status: string;
+        };
+    };
+}
 
-    createPieChartConfig(data: any[]) {
+
+export default class Dashboard extends Vue {
+    selectedCompany: number = 1;
+    selectedExpertise: number = 3;
+
+    createPieChartConfig(data: ProgressoItem[]) {
+        const concluded = data
+            .filter(x => Object.values(x.progresso)[0].status == "NAO_CONCLUIDO")
+            .map(x => Object.keys(x.progresso)[0])
+
+        const notConcluded = data
+            .filter(x => Object.values(x.progresso)[0].status == "CONCLUIDO")
+            .map(x => Object.keys(x.progresso)[0])
+
+        const status = data.reduce((total, item) => {
+            const status = Object.values(item.progresso)[0].status;
+            total[status] = (total[status] || 0) + 1;
+            return total;
+        }, {} as { [key: string]: number });
+
         const pieData = {
             labels: ['Concluído', 'Não Concluído'],
             datasets: [
                 {
                     label: '',
-                    data: [100, 934],
-                }
+                    data: [status['CONCLUIDO'], status['NAO_CONCLUIDO']],
+                },
             ]
         };
 
@@ -53,7 +78,15 @@ export default class Dashboard extends Vue {
                     legend: {
                         position: 'right',
                     },
-                }
+                    tooltip: {
+                        callbacks: {
+                            title: (a: any, d: any) => {
+                                const index = a[0].dataIndex
+                                return index == 1 ? concluded.join("\n") : notConcluded.join("\n")
+                            }
+                        }
+                    }
+                },
             },
         } as ChartConfiguration;
 
@@ -96,7 +129,7 @@ export default class Dashboard extends Vue {
     mounted() {
         this.createChart("category", this.createCategoryChartConfig())
 
-        axios.get(`dash/expertises/empresa/${this.selectedCompany}/trilha/1`)
+        axios.get(`dash/expertises/empresa/${this.selectedCompany}/trilha/${this.selectedExpertise}`)
             .then(data => {
                 this.createChart("pie", this.createPieChartConfig(data.data))
             })
