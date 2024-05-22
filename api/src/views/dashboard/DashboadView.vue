@@ -17,6 +17,26 @@
                     <div class="header">
                         <h4>Listagem de Empresas</h4>
                     </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Identificador</th>
+                                <th>Compania</th>
+                                <th>País</th>
+                                <th>Cidade</th>
+                                <th>Administrador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="selectable-row" v-for="company in companies" v-on:click="changeCompany(company.id)">
+                                <td>{{company.codigo}}</td>
+                                <td>{{company.nome}}</td>
+                                <td>{{company.pais}}</td>
+                                <td>{{company.cidade}}</td>
+                                <td>{{company.adminNome}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -43,6 +63,11 @@ interface ProgressoItem {
 export default class Dashboard extends Vue {
     selectedCompany: number = 1;
     selectedExpertise: number = 3;
+    companies:any[] = []
+
+    changeCompany(id:number){
+        this.selectedCompany = id
+    }
 
     createPieChartConfig(data: ProgressoItem[]) {
         const concluded = data
@@ -177,6 +202,10 @@ export default class Dashboard extends Vue {
         justify-content: center;
         flex-direction: row;
         align-items: center;
+    }
+
+    .selectable-row{
+        cursor:pointer;
     }
 }
 </style>
