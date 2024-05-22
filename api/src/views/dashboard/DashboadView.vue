@@ -152,6 +152,8 @@ export default class Dashboard extends Vue {
     }
 
     mounted() {
+        axios.get('carregar-empresas').then(x => this.companies = x.data)
+
         this.createChart("category", this.createCategoryChartConfig())
 
         axios.get(`dash/expertises/empresa/${this.selectedCompany}/trilha/${this.selectedExpertise}`)
