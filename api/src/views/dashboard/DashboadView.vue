@@ -63,10 +63,27 @@ interface ProgressoItem {
 export default class Dashboard extends Vue {
     selectedCompany: number = 1;
     selectedExpertise: number = 3;
-    companies:any[] = []
+    companies:any[] = [];
+    barChart: Chart | null = null;
+    pieChart: Chart | null = null;
+    
 
     changeCompany(id:number){
-        this.selectedCompany = id
+        this.selectedCompany = id;
+
+        /*axios.get('')
+            .then(x => {
+                this.createChart("category", this.createCategoryChartConfig(x.data))
+            })*/
+            this.createChart("category", this.createCategoryChartConfig([1,2,3,4,5,6,7]))
+    }
+
+    changeExpertise(id: number){
+        this.selectedExpertise = id
+        axios.get(`dash/expertises/empresa/${this.selectedCompany}/trilha/${this.selectedExpertise}`)
+            .then(data => {
+                this.createChart("pie", this.createPieChartConfig(data.data))
+            })
     }
 
     createPieChartConfig(data: ProgressoItem[]) {
@@ -117,12 +134,13 @@ export default class Dashboard extends Vue {
 
     }
 
-    createCategoryChartConfig() {
+    createCategoryChartConfig(data: any[]) {
+        
         const categoryData = {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
             datasets: [{
                 label: 'Meu Primeiro Dataset',
-                data: [65, 59, 80, 80, 56, 55, 40],
+                data: data,
                 backgroundColor: [
                 ],
                 borderColor: [
@@ -130,6 +148,7 @@ export default class Dashboard extends Vue {
                 borderWidth: 1
             }]
         };
+        
 
         return {
             type: 'bar',
@@ -139,27 +158,41 @@ export default class Dashboard extends Vue {
                     y: {
                         beginAtZero: true
                     }
+                },
+                onClick: (event, elements) => {
+                    if (elements.length > 0) {
+                        const chartElement = elements[0];
+                        const index = chartElement.index;
+                        this.changeExpertise(index + 1);  // Redireciona para o gráfico de pizza com base no índice do ponto clicado
+                    }
                 }
             }
         } as ChartConfiguration;
     }
 
     createChart(id: string, config: ChartConfiguration) {
-        const ctx = (document.getElementById(id) as HTMLCanvasElement).getContext('2d');
-        if (ctx) {
-            new Chart(ctx, config);
+        const canvas = document.getElementById(id) as HTMLCanvasElement;
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+                if (id === 'category' && this.barChart) {
+                    this.barChart.destroy();
+                }
+                if (id === 'pie' && this.pieChart) {
+                    this.pieChart.destroy();
+                }
+                if (id === 'category') {
+                    this.barChart = new Chart(ctx, config);
+                } else if (id === 'pie') {
+                    this.pieChart = new Chart(ctx, config);
+                }
+            }
         }
     }
 
     mounted() {
+        this.createCategoryChartConfig([1,2,3,4,5]);
         axios.get('carregar-empresas').then(x => this.companies = x.data)
-
-        this.createChart("category", this.createCategoryChartConfig())
-
-        axios.get(`dash/expertises/empresa/${this.selectedCompany}/trilha/${this.selectedExpertise}`)
-            .then(data => {
-                this.createChart("pie", this.createPieChartConfig(data.data))
-            })
     }
 }
 </script>
