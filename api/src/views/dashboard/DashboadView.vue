@@ -58,6 +58,10 @@ interface ProgressoItem {
         };
     };
 }
+function getFixedRandomValue(seed: number) {
+    const x = Math.sin(seed) * 10000;
+    return (x - Math.floor(x)) * 100;
+}
 
 
 export default class Dashboard extends Vue {
@@ -67,15 +71,26 @@ export default class Dashboard extends Vue {
     barChart: Chart | null = null;
     pieChart: Chart | null = null;
     
+    
 
     changeCompany(id:number){
         this.selectedCompany = id;
 
-        /*axios.get('')
-            .then(x => {
-                this.createChart("category", this.createCategoryChartConfig(x.data))
-            })*/
-            this.createChart("category", this.createCategoryChartConfig([1,2,3,4,5,6,7]))
+        axios.get(`dash/trilhas/empresa/${this.selectedCompany}`)
+        .then(response => {
+            const trilhas = response.data;
+            // Mocking porcentagens
+            const data = {
+                labels: trilhas.map((trilha: { nome: string }) => trilha.nome),
+                values: trilhas.map((trilha: { id: number }) => getFixedRandomValue(trilha.id))
+            };
+            const categoryChartConfig = this.createCategoryChartConfig(data);
+            this.createChart("category", categoryChartConfig);
+        })
+        .catch(error => {
+            console.error("Erro ao buscar dados da categoria:", error);
+            
+        });
     }
 
     changeExpertise(id: number){
@@ -134,13 +149,13 @@ export default class Dashboard extends Vue {
 
     }
 
-    createCategoryChartConfig(data: any[]) {
+    createCategoryChartConfig(data: { labels: string[], values: number[] }) {
         
         const categoryData = {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
+            labels: data.labels,
             datasets: [{
                 label: 'Meu Primeiro Dataset',
-                data: data,
+                data: data.values,
                 backgroundColor: [
                 ],
                 borderColor: [
@@ -163,7 +178,7 @@ export default class Dashboard extends Vue {
                     if (elements.length > 0) {
                         const chartElement = elements[0];
                         const index = chartElement.index;
-                        this.changeExpertise(index + 1);  // Redireciona para o gráfico de pizza com base no índice do ponto clicado
+                        this.changeExpertise(index + 1);  
                     }
                 }
             }
@@ -191,7 +206,7 @@ export default class Dashboard extends Vue {
     }
 
     mounted() {
-        this.createCategoryChartConfig([1,2,3,4,5]);
+        
         axios.get('carregar-empresas').then(x => this.companies = x.data)
     }
 }
