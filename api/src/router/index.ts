@@ -4,6 +4,7 @@ import LacunaView from "@/views/lacuna/LacunaView.vue";
 import cadastroP from "@/views/cadastro/CadastroParceiros.vue";
 import visu from "@/views/cadastro/visualizacaoParceiros.vue"
 import NotificacaoView from "@/views/notificacao/NotificacaoView.vue";
+import PorEstadoMapa from "@/views/parceiros/PorEstadoMapa.vue";
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import HomeView from "../views/HomeView.vue";
@@ -60,6 +61,13 @@ const routes: Array<RouteRecordRaw> = [
       import(
         /* webpackChunkName: "visualizacao" */ "../views/visualizacao/VisualizacaoView.vue"
       ),
+  },
+  {
+
+    path: "/por-estado-mapa",
+    name: "porestadomapa",
+    component: PorEstadoMapa,
+
   },
 ];
 
