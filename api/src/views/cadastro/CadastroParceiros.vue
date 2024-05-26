@@ -7,7 +7,7 @@
       <form>
         <div class="form-row">
           <div class="form-group">
-            <label for="nome">Colaborador</label>
+            <label for="nome">Parceiro</label>
             <input type="text" id="nome" name="nome" v-model="nome" required>
           </div>
           <div class="form-group">
@@ -26,18 +26,15 @@
             <input type="email" id="email" name="email" v-model="email" required>
           </div>
           <div class="form-group">
-            <label2 for="nome" >Nome da empresa </label2>
-            <input  type="text" id="adminNome" name="adminNome" v-model="adminNome" required>
+            <label for="adminNome">Nome do colaborador</label>
+            <input type="text" id="adminNome" name="adminNome" v-model="adminNome" required>
           </div>
-          <div class="form-group" style="margin-right: 650px;">
-            <label2 for="nome" >Código </label2>
-            <input  type="text" id="codigo" name="codigo" v-model="codigo" required>
+          <div class="form-group">
+            <label for="codigo">Código</label>
+            <input type="text" id="codigo" name="codigo" v-model="codigo" required>
           </div>
-          
         </div>
       </form>
-      
-      
     </div>
   </div>
 </template>
@@ -241,7 +238,9 @@ export default class CadastroParceiros extends Vue {
       width: 300px;
     }
     
-    
+    .form-group:nth-last-child(-n+3) {
+      width: calc(100% / 3 - 1rem); 
+    }
   }
   
 }
