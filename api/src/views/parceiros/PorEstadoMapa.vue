@@ -51,7 +51,7 @@ export default class PorEstadoMapa extends Vue {
     const data = (await axios.get("/empresas-por-estado")).data;
     this.map = L.map('map-container').setView([-14.2350, -56.4757], 4);
     L.geoJson(brazil as any, {
-      style: (feature) => ({
+      style: (feature: any) => ({
         fillColor: this.colorScale(data[feature?.properties?.name as any] || 0),
         fillOpacity: 0.7,
         weight: 2
