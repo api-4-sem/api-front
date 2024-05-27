@@ -1,15 +1,15 @@
 import AcompanhamentoView from "@/views/acompanhamento/AcompanhamentoView.vue";
 import AvaliacaoView from "@/views/avaliacao/AvaliacaoView.vue";
 import LacunaView from "@/views/lacuna/LacunaView.vue";
-import cadastroP from "@/views/cadastro/CadastroParceiros.vue";
-import visu from "@/views/cadastro/visualizacaoParceiros.vue"
 import NotificacaoView from "@/views/notificacao/NotificacaoView.vue";
+import cadastroP from "@/views/parceiro/CadastroParceiros.vue";
+import visu from "@/views/parceiro/VisualizacaoParceiros.vue"
 import PorEstadoMapa from "@/views/parceiros/PorEstadoMapa.vue";
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
 
+import Dashboard from "../views/dashboard/DashboadView.vue";
 import HomeView from "../views/HomeView.vue";
 import RastreioView from "../views/rastreio/RastreioView.vue";
-
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -52,6 +52,13 @@ const routes: Array<RouteRecordRaw> = [
     path: "/notificacoes",
     name: "notificacoes",
     component: NotificacaoView,
+
+  },
+  {
+
+    path: "/Dashboard",
+    name: "Dashboard",
+    component: Dashboard,
 
   },
   {

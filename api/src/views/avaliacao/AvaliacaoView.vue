@@ -117,8 +117,9 @@ onMounted(() => {
     }
 
     &__content {
-        gap: 5%;
-        width: 100%;
+        gap: 1%;
+        justify-content: space-between;
+        width: 99%;
         height: inherit;
         display: flex;
         flex-direction: row;
