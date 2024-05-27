@@ -12,6 +12,7 @@
                 <router-link to="/avaliacao">Avaliações</router-link>
                 <router-link to="/Dashboard">Dashboard</router-link>
                 <router-link to="/notificacoes">Configurações</router-link>
+                        <router-link to="/por-estado-mapa">Parceiros por Estado</router-link>
             </div>
         </nav>
 
