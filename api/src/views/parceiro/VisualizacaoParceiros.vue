@@ -1,7 +1,7 @@
 <template>
     <div class="VisualizacaoParceiros">
         <div class="header">
-            <h2>Visualização de Parceiros</h2>
+            <h2>Visualização de Partners</h2>
             <button @click="changePage" class="button">Cadastrar</button>
         </div>
         <div class="container">
@@ -9,7 +9,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Colaborador</th>
+                            <th>Partner</th>
                             <th>Cidade</th>
                             <th>Código</th>
                             <th>País</th>
@@ -28,7 +28,7 @@
                         </tr>
                     </tbody>
                     <div v-else>
-                        Nenhum parceiro encontrado.
+                        Nenhum partner encontrado.
                     </div>
                 </table>
 

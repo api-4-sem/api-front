@@ -1,6 +1,6 @@
 <template>
     <div class="CadastroParceiros">
-        <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Cadastro de Parceiros</h2>
+        <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Cadastro de Partners</h2>
         <button class="button" @click="cadastrarParceiro">Cadastrar</button>
 
         <div class="container">
@@ -131,7 +131,7 @@ export default class CadastroParceiros extends Vue {
         axios.post('/criar-empresas', parceiro)
             .then(response => {
                 Swal.fire({
-                    text: "Parceiro cadastrado com sucesso ",
+                    text: "Partner cadastrado com sucesso ",
                     icon: "success",
                     showConfirmButton: false,
                     timer: 2000
@@ -139,10 +139,10 @@ export default class CadastroParceiros extends Vue {
                 this.resetForm();
             })
             .catch(error => {
-                console.error('Erro ao cadastrar parceiro:', error);
+                console.error('Erro ao cadastrar partner:', error);
                 Swal.fire({
                     title: "ops...",
-                    text: "Erro ao cadastrar parceiro",
+                    text: "Erro ao cadastrar partner",
                     icon: "error",
                     showCloseButton: true,
                 });

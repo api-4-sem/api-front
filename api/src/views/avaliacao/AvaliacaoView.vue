@@ -1,7 +1,7 @@
 <template>
     <div class="avaliacao">
         <div class="avaliacao__header">
-            <h4>Avaliação de Parceiros</h4>
+            <h4>Avaliação de Partners</h4>
         </div>
         <div class="avaliacao__content">
             <div class="avaliacao__card" v-for="ava in avaliacoes" :key="ava.id">

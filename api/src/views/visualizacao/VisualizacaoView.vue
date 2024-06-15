@@ -4,7 +4,7 @@
             <h2>Visualização de Dados</h2>
             <div class="buttons">
                 <select class="select" id="select_visu" v-on:change="getColaboradores()" v-model="empresaSelecionada">
-                    <option :value="0">Selecione Parceiro...</option>
+                    <option :value="0">Selecione Partner...</option>
                     <option v-for="colaborador in listaDeEmpresas" :key="colaborador.id" :value="colaborador.id" >
                         {{ colaborador.nome }} #{{ colaborador.id }}
                     </option>

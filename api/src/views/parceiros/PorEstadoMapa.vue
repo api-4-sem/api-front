@@ -1,24 +1,24 @@
 <template>
-  <h2>Dashboard Parceiro</h2>
+  <h2>Dashboard Partners</h2>
   <div class="porestadomapa">
     <div id="map-container" style="height: 600px;width: 600px;"></div>
     <div class="legenda">
-      <p>Parceiros Total: {{ parceirosTotal }}</p>
+      <p>Partners Total: {{ parceirosTotal }}</p>
       <div class="legend-item">
         <span class="color-box zero"></span>
-        <span class="label">Sem parceiros</span>
+        <span class="label">Sem partners</span>
       </div>
       <div class="legend-item">
         <span class="color-box low"></span>
-        <span class="label">1-5</span>
+        <span class="label">1-5 (%)</span>
       </div>
       <div class="legend-item">
         <span class="color-box medium"></span>
-        <span class="label">6-10</span>
+        <span class="label">6-10 (%)</span>
       </div>
       <div class="legend-item">
         <span class="color-box high"></span>
-        <span class="label">&gt; 10</span>
+        <span class="label">&gt; 10 (%)</span>
       </div>
     </div>
   </div>
