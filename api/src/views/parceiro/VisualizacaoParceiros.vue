@@ -1,41 +1,8 @@
 <template>
-    <div class="VisualizacaoParceiros">
-        <div class="header">
-            <h2>Visualização de Partners</h2>
-            <button @click="changePage" class="button">Cadastrar</button>
-        </div>
-        <div class="container">
-            <div class="card">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Partner</th>
-                            <th>Cidade</th>
-                            <th>Código</th>
-                            <th>País</th>
-                            <th>Nome Admin</th>
-                            <th>E-mail Admin</th>
-                        </tr>
-                    </thead>
-                    <tbody v-if="listaParceiros && listaParceiros.length > 0">
-                        <tr v-for="parceiro in listaParceiros">
-                            <td>{{ parceiro.nome }}</td>
-                            <td>{{ parceiro.cidade }}</td>
-                            <td>{{ parceiro.codigo }}</td>
-                            <td>{{ parceiro.pais }}</td>
-                            <td>{{ parceiro.adminNome }}</td>
-                            <td>{{ parceiro.adminEmail }}</td>
-                        </tr>
-                    </tbody>
-                    <div v-else>
-                        Nenhum partner encontrado.
-                    </div>
-                </table>
-
-
-            </div>
-
-        </div>
+  <div class="VisualizacaoParceiros">
+    <div class="header">
+      <h2>Visualização de Parceiros</h2>
+      <button @click="changePage" class="button">Cadastrar</button>
     </div>
 
     <div class="container">
