@@ -146,6 +146,7 @@ export default class CadastroParceiros extends Vue {
                     icon: "error",
                     showCloseButton: true,
                 });
+                console.log(parceiro);
             });
     }
 

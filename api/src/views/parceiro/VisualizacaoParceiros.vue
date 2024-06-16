@@ -10,9 +10,10 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Colaborador</th>
-              <th>Cidade</th>
+              <th>Parceiro</th>
               <th>Código</th>
+              <th>Cidade</th> 
+              <th>estado</th>   
               <th>País</th>
               <th>Nome Admin</th>
               <th>E-mail Admin</th>
@@ -21,11 +22,13 @@
           <tbody v-if="listaParceiros && listaParceiros.length > 0">
             <tr v-for="parceiro in listaParceiros" :key="parceiro.codigo" @click="editParceiro(parceiro)">
               <td>{{ parceiro.nome }}</td>
-              <td>{{ parceiro.cidade }}</td>
               <td>{{ parceiro.codigo }}</td>
+              <td>{{ parceiro.cidade }}</td>
+              <td>{{ parceiro.estado }}</td>
               <td>{{ parceiro.pais }}</td>
               <td>{{ parceiro.adminNome }}</td>
               <td>{{ parceiro.adminEmail }}</td>
+              
             </tr>
           </tbody>
           <div v-else>
@@ -38,13 +41,15 @@
     <div class="modal" :class="{ 'is-active': showModal }">
       <div class="modal-background" @click="closeModal"></div>
       <div class="modal-content">
-        <h2>Atualizar Parceiro</h2>
+        <h2>Atualizar</h2>
         <form @submit.prevent="atualizarParceiro">
           <input type="text" v-model="parceiro.nome" required>
+          <input type="text" v-model="parceiro.codigo" required>
           <input type="text" v-model="parceiro.cidade" required>
+          <input type="text" v-model="parceiro.estado" required>
           <input type="text" v-model="parceiro.pais" required>
           <input type="text" v-model="parceiro.adminNome" required>
-          <input type="text" v-model="parceiro.codigo" required>
+          <input type="text" v-model="parceiro.adminEmail" required>
 
           <button type="submit">Atualizar</button>
         </form>
@@ -92,16 +97,21 @@ export default class VisualizacaoParceiros extends Vue {
   async atualizarParceiro() {
     try {
       
-       await axios.put(`atualizar-parceiro/${this.parceiro.id}`, this.parceiro);
+       await axios.put(`atualizar-empresas/${this.parceiro.id}`, this.parceiro);
        Swal.fire("Sucesso", "Parceiro atualizado com sucesso", "success");
     
       this.showModal = false;
       await this.getParceiros();
     } catch (error) {
       Swal.fire("Erro", "Falha ao atualizar parceiro", "error");
+
+      console.log(this.parceiro.id);
+      console.log(this.parceiro);
+
       console.log("Erro ao atualizar parceiro:", error);
     }
   }
+  
 
   changePage() {
     this.$router.push({ name: 'cadastro' });
@@ -215,7 +225,7 @@ export default class VisualizacaoParceiros extends Vue {
 }
 
 .modal button:hover {
-  background-color: #0056b3;
+  background-color: #575b62;
 }
 
 .modal-close {
