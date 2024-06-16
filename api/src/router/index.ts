@@ -5,6 +5,7 @@ import NotificacaoView from "@/views/notificacao/NotificacaoView.vue";
 import cadastroP from "@/views/parceiro/CadastroParceiros.vue";
 import visu from "@/views/parceiro/VisualizacaoParceiros.vue"
 import PorEstadoMapa from "@/views/parceiros/PorEstadoMapa.vue";
+import PorExpertise from "@/views/avaliacao/PorExpertise.vue";
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import Dashboard from "../views/dashboard/DashboadView.vue";
@@ -75,6 +76,13 @@ const routes: Array<RouteRecordRaw> = [
     path: "/por-estado-mapa",
     name: "porestadomapa",
     component: PorEstadoMapa,
+
+  },
+  {
+
+    path: "/por-expertise",
+    name: "porexpertise",
+    component: PorExpertise,
 
   },
 ];

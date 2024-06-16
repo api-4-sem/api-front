@@ -5,14 +5,14 @@
                 <img src="./assets/logo.png">
             </div>
             <div class="menu__links">
-                <router-link to="/visualizacaoparceiro">Parceiros</router-link>
+                <router-link to="/visualizacaoparceiro">Partners</router-link>
                 <router-link to="/rastreio">Rastreio</router-link>
                 <router-link to="/acompanhamento">Acompanhamento</router-link>
                 <router-link to="/visualizacao">Habilidades</router-link>
                 <router-link to="/avaliacao">Avaliações</router-link>
                 <router-link to="/Dashboard">Dashboard</router-link>
                 <router-link to="/notificacoes">Configurações</router-link>
-                        <router-link to="/por-estado-mapa">Parceiros por Estado</router-link>
+                        <router-link to="/por-estado-mapa">Partners por Estado</router-link>
             </div>
         </nav>
 
