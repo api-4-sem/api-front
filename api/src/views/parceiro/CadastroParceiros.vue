@@ -10,9 +10,17 @@
                         <label for="nome">Colaborador</label>
                         <input type="text" id="nome" name="nome" v-model="nome" required>
                     </div>
+                    <div class="form-group" >
+                        <label2 for="nome">Código </label2>
+                        <input type="text" id="codigo" name="codigo" v-model="codigo" required>
+                    </div>
                     <div class="form-group">
                         <label for="cidade">Cidade</label>
                         <input type="text" id="cidade" name="cidade" v-model="cidade" required placeholder="SJC">
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Estado</label>
+                        <input type="text" id="estado" name="estado" v-model="estado" required placeholder="São Paulo">
                     </div>
                     <div class="form-group">
                         <label for="pais">País</label>
@@ -26,14 +34,11 @@
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" v-model="email" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group centralizado">
                         <label2 for="nome">Nome da empresa </label2>
                         <input type="text" id="adminNome" name="adminNome" v-model="adminNome" required>
                     </div>
-                    <div class="form-group" style="margin-right: 650px;">
-                        <label2 for="nome">Código </label2>
-                        <input type="text" id="codigo" name="codigo" v-model="codigo" required>
-                    </div>
+                    
 
                 </div>
             </form>
@@ -63,6 +68,7 @@ export default class CadastroParceiros extends Vue {
     adminNome: string = "";
     codigo: string = "";
     paises: string[] = ['Brasil', 'Estados Unidos', 'Canadá', 'Reino Unido', 'França', 'China'];
+    estado: string = "";
 
     get listaPaises(): string {
         return this.paises.join(",");
@@ -126,6 +132,7 @@ export default class CadastroParceiros extends Vue {
             pais: this.pais,
             adminNome: this.adminNome,
             adminEmail: this.email,
+            estado: this.estado,
         };
 
         axios.post('/criar-empresas', parceiro)
@@ -146,6 +153,7 @@ export default class CadastroParceiros extends Vue {
                     icon: "error",
                     showCloseButton: true,
                 });
+                console.log(parceiro);
             });
     }
 
@@ -171,6 +179,8 @@ export default class CadastroParceiros extends Vue {
         this.pais = "";
         this.email = "";
         this.codigo = "";
+        this.estado = "";
+        this.adminNome = "";
     }
 }
 </script>
@@ -186,8 +196,8 @@ export default class CadastroParceiros extends Vue {
         cursor: pointer;
         transition: background-color 0.3s ease;
         position: absolute;
-        top: 17%;
-        right: 18%;
+        top: 18%;
+        right: 20%;
 
         &:hover {
             background-color: #0e0e0e;
@@ -246,6 +256,10 @@ export default class CadastroParceiros extends Vue {
 
 
         }
+        .form-group.centralizado {
+            margin-right: 65%; 
+        }
+    
 
     }
 

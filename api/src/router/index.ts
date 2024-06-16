@@ -42,6 +42,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/cadastroparceiros",
     name: "cadastro",
     component: cadastroP,
+    
   },
   {
     path: "/visualizacaoparceiro",
@@ -90,5 +91,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+console.log("Rotas configuradas:", routes);
 
 export default router;

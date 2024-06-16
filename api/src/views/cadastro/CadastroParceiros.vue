@@ -2,7 +2,7 @@
   <div>
     <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Cadastro de Partners</h2>
     <button class="button" @click="cadastrarParceiro">Cadastrar</button>
-    
+
     <div class="container">
       <form>
         <div class="form-row">
@@ -35,7 +35,7 @@
           </div>
         </div>
       </form>
-    </div>
+    </div> 
   </div>
 </template>
 
@@ -52,6 +52,7 @@ import Swal from "sweetalert2";
   },
 })
 export default class CadastroParceiros extends Vue {
+
   nome: string = "";
   cidade: string = "";
   pais: string = "";
@@ -63,6 +64,7 @@ export default class CadastroParceiros extends Vue {
   get listaPaises(): string {
     return this.paises.join(",");
   }
+  
 
 
   cadastrarParceiro(): void {
