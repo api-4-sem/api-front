@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+        <router-link class="btn btn-primary mt-5" to="/por-expertise">Avaliações de Parceiros por Expertise</router-link>
     </div>
 </template>
 
