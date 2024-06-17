@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Cadastro de Parceiros</h2>
+    <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Cadastro de Partners</h2>
     <button class="button" @click="cadastrarParceiro">Cadastrar</button>
-    
+
     <div class="container">
       <form>
         <div class="form-row">
           <div class="form-group">
-            <label for="nome">Parceiro</label>
-            <input type="text" id="nome" name="nome" v-model="nome" required>
+            <label for="nome">Partner</label>
+        <input type="text" id="nome" name="nome" v-model="nome" required>
           </div>
           <div class="form-group">
             <label for="cidade">Cidade</label>
@@ -22,6 +22,7 @@
             </datalist>
           </div>
           <div class="form-group">
+
             <label for="email">Email</label>
             <input type="email" id="email" name="email" v-model="email" required>
           </div>
@@ -32,10 +33,11 @@
           <div class="form-group">
             <label for="codigo">Código</label>
             <input type="text" id="codigo" name="codigo" v-model="codigo" required>
+
           </div>
         </div>
       </form>
-    </div>
+    </div> 
   </div>
 </template>
 
@@ -52,6 +54,7 @@ import Swal from "sweetalert2";
   },
 })
 export default class CadastroParceiros extends Vue {
+
   nome: string = "";
   cidade: string = "";
   pais: string = "";
@@ -63,6 +66,7 @@ export default class CadastroParceiros extends Vue {
   get listaPaises(): string {
     return this.paises.join(",");
   }
+  
 
 
   cadastrarParceiro(): void {
@@ -127,7 +131,7 @@ export default class CadastroParceiros extends Vue {
     axios.post('/criar-empresas', parceiro)
       .then(response => {
         Swal.fire({
-            text: "Parceiro cadastrado com sucesso ",
+            text: "Partner cadastrado com sucesso ",
             icon: "success",
             showConfirmButton:false,
             timer:2000
@@ -135,10 +139,10 @@ export default class CadastroParceiros extends Vue {
         this.resetForm();
       })
       .catch(error => {
-        console.error('Erro ao cadastrar parceiro:', error);
+        console.error('Erro ao cadastrar partner:', error);
         Swal.fire({
             title: "ops...",
-            text: "Erro ao cadastrar parceiro",
+            text: "Erro ao cadastrar partner",
             icon: "error",
             showCloseButton: true,
         });

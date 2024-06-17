@@ -1,9 +1,10 @@
 <template>
     <div>
-        <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Visualização de Parceiros</h2>
+        <h2 style="width: 1100px; margin: 1rem auto; text-align: left;">Visualização de Partners</h2>
         <div class="container">
             <div class="parceiro-header">
-                <span class="header-item">Parceiro</span>
+                <span class="header-item">Partner</span>
+
                 <span class="header-item">Cidade</span>
                 <span class="header-item">Código</span>
                 <span class="header-item">País</span>
@@ -19,7 +20,7 @@
                 </div>
             </div>
             <div v-else>
-                Nenhum parceiro encontrado.
+                Nenhum partner encontrado.
             </div>
         </div>
     </div>

@@ -25,6 +25,16 @@
                         <input class="form-control" v-model="vencimentoTrilha" />
                     </div>
                 </div>
+                <div class="notificacao__row">
+                    <div class="notificacao__row-header">
+                        <h4>Backup</h4>
+                    </div>
+                    <hr />
+                    <div class="notificacao__input">
+                        <h6>Data do último backup</h6>
+                        <div style="color:green">{{ getUltimoBackup() }}</div>
+                    </div>
+                </div>
                 <div class="notificacao__row--right">
                     <button v-on:click="atualizar()" class="btn btn-outline-success">Salvar</button>
                 </div>
@@ -61,6 +71,23 @@ function atualizar() {
     });
 }
 
+function getUltimoBackup(){
+    let currentDate = new Date();
+    let oneHourAgo = new Date(currentDate.getTime() - 3600000);
+    return formatDate(oneHourAgo);
+}
+
+function formatDate(date:Date) {
+    let day = String(date.getDate()).padStart(2, '0');
+    let month = String(date.getMonth() + 1).padStart(2, '0'); 
+    let year = date.getFullYear();
+    let hours = String(date.getHours()).padStart(2, '0');
+    let minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
+}
+
+
 onMounted(() => {
     axios.get("configuracao").then((x) => {
         vencimentoTrilha.value = +x.data.filter((x: any) => x.tipo === "AVISO").map((x: any) => x.frequencia)[0]
@@ -90,6 +117,7 @@ onMounted(() => {
     }
 
     &__input {
+        align-items: flex-start;
         display: flex;
         flex-direction: column;
         width: 30%;

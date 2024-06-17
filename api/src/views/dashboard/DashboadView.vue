@@ -79,10 +79,10 @@ export default class Dashboard extends Vue {
         axios.get(`dash/trilhas/empresa/${this.selectedCompany}`)
         .then(response => {
             const trilhas = response.data;
-            // Mocking porcentagens
+            console.log(trilhas)
             const data = {
                 labels: trilhas.map((trilha: { nome: string }) => trilha.nome),
-                values: trilhas.map((trilha: { id: number }) => getFixedRandomValue(trilha.id))
+                values: trilhas.map((trilha: { progressoColaborador: number }) => trilha.progressoColaborador)
             };
             const categoryChartConfig = this.createCategoryChartConfig(data);
             this.createChart("category", categoryChartConfig);
