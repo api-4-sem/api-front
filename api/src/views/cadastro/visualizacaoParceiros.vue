@@ -4,6 +4,7 @@
         <div class="container">
             <div class="parceiro-header">
                 <span class="header-item">Partner</span>
+
                 <span class="header-item">Cidade</span>
                 <span class="header-item">Código</span>
                 <span class="header-item">País</span>

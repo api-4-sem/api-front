@@ -8,7 +8,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="nome">Partner</label>
-            <input type="text" id="nome" name="nome" v-model="nome" required>
+        <input type="text" id="nome" name="nome" v-model="nome" required>
           </div>
           <div class="form-group">
             <label for="cidade">Cidade</label>
@@ -22,6 +22,7 @@
             </datalist>
           </div>
           <div class="form-group">
+
             <label for="email">Email</label>
             <input type="email" id="email" name="email" v-model="email" required>
           </div>
@@ -32,6 +33,7 @@
           <div class="form-group">
             <label for="codigo">Código</label>
             <input type="text" id="codigo" name="codigo" v-model="codigo" required>
+
           </div>
         </div>
       </form>
