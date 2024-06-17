@@ -12,7 +12,7 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Parceiro</th>
+              <th>Partner</th>
               <th>Status</th>
               <th>Ação</th>
             </tr>
@@ -142,7 +142,7 @@ export default class RastreioView extends Vue {
   solicitarFeedback(colaboradorId: number) {
     axios.post("feedback/" + colaboradorId).then((r) => {
       Swal.fire({
-        html: `Feedback solicitado ao parceiro`,
+        html: `Feedback solicitado ao partner`,
         showCloseButton: true,
         showConfirmButton: false,
       });

@@ -1,7 +1,7 @@
 <template>
     <div class="acompanhamento">
         <div class="acompanhamento__header">
-            <h2>Acompanhamento de Parceiros</h2>
+            <h2>Acompanhamento de Partners</h2>
 
         </div>
         <div class="acompanhamento__content">
@@ -10,7 +10,7 @@
                     <thead>
                         <tr>
                             <th>Empresa</th>
-                            <th>Parceiro</th>
+                            <th>Partner</th>
                             <th>Progresso</th>
                         </tr>
                     </thead>

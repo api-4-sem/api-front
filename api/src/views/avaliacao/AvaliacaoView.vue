@@ -1,7 +1,7 @@
 <template>
     <div class="avaliacao">
         <div class="avaliacao__header">
-            <h4>Avaliação de Parceiros</h4>
+            <h4>Avaliação de Partners</h4>
         </div>
         <div class="avaliacao__content">
             <div class="avaliacao__card" v-for="ava in avaliacoes" :key="ava.id">
@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+        <router-link class="btn btn-primary mt-5" to="/por-expertise">Avaliações de Parceiros por Expertise</router-link>
     </div>
 </template>
 
@@ -117,8 +118,9 @@ onMounted(() => {
     }
 
     &__content {
-        gap: 5%;
-        width: 100%;
+        gap: 1%;
+        justify-content: space-between;
+        width: 99%;
         height: inherit;
         display: flex;
         flex-direction: row;
